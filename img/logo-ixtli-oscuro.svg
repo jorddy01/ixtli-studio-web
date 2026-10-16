@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -18 155 134" width="600" role="img" aria-label="ixtli studio"><symbol id="flor" viewBox="-18 -18 36 36"><g>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FFB02E"/>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FFB02E" transform="rotate(45)"/>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FFB02E" transform="rotate(90)"/>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FFB02E" transform="rotate(135)"/>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FF6B57" transform="rotate(180)"/>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FF6B57" transform="rotate(225)"/>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FF6B57" transform="rotate(270)"/>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FF6B57" transform="rotate(315)"/>
+<circle r="4.2" fill="#FFF8F0"/></g></symbol><g stroke="#FFF8F0" stroke-width="11" stroke-linecap="round" fill="none"><path d="M12 46 V98"/><path d="M30 46 L62 98 M62 46 L30 98"/><path d="M87 24 V98 M75 48 H99"/><path d="M111 22 V98"/><path d="M133 46 V98"/></g><circle cx="12" cy="26" r="6.5" fill="#FFB02E"/><circle cx="133" cy="26" r="6.5" fill="#FFB02E"/><ellipse cx="125" cy="64" rx="11" ry="5.5" fill="#24D6A5" transform="rotate(-35 125 64)"/><use href="#flor" x="92.0" y="-17.0" width="38" height="38"/></svg>

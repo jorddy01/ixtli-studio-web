@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="512" height="512" role="img" aria-label="Icono ixtli">
+<symbol id="flor" viewBox="-18 -18 36 36"><g>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FFB02E"/>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FFB02E" transform="rotate(45)"/>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FFB02E" transform="rotate(90)"/>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FFB02E" transform="rotate(135)"/>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FF6B57" transform="rotate(180)"/>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FF6B57" transform="rotate(225)"/>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FF6B57" transform="rotate(270)"/>
+<ellipse cy="-9" rx="4.6" ry="8" fill="#FF6B57" transform="rotate(315)"/>
+<circle r="4.2" fill="#FFF8F0"/></g></symbol>
+<rect width="120" height="120" rx="30" fill="#3D3AF2"/>
+<path d="M60 44 V96" stroke="#FFF8F0" stroke-width="12" stroke-linecap="round"/>
+<ellipse cx="73" cy="74" rx="12" ry="6" fill="#24D6A5" transform="rotate(-35 73 74)"/>
+<use href="#flor" x="38" y="8" width="44" height="44"/>
+</svg>
