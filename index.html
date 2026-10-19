@@ -1000,6 +1000,23 @@ html.hw .hw-web{display:block}
 @keyframes hwSway{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-22px) rotate(4deg)}}
 @keyframes hwJump{0%,36%{transform:translateY(0)}41%{transform:translateY(-120px) rotate(-8deg)}46%{transform:translateY(0) rotate(0)}52%,100%{transform:translateY(0)}}
 @media (max-width:520px){.hw-ghost{width:76px}.hw-ghost.g2{width:60px}.hw-zomb{width:100px}.hw-bat{width:64px}.hw-bat.b2{width:48px}.hw-mini{width:124px}.hw-mini.m2,.hw-mini.m3{width:96px}.hw-web{width:130px}}
+/* Halloween en TODA la landing: capa fija de personajes, telarañas por sección y arañas colgando */
+html.hw .hw-fx{display:block}
+.hw-fx{display:none;position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:48}
+.hw-fx .hw-ghost,.hw-fx .hw-bat,.hw-fx .hw-zomb{display:block}
+.hw-fx .pk{position:absolute;width:64px;height:auto;left:0;bottom:-90px;opacity:.95;filter:drop-shadow(0 0 14px rgba(255,106,26,.75));animation:hwRise 16s linear infinite}
+@keyframes hwRise{0%{transform:translateY(0) rotate(-8deg);opacity:0}8%{opacity:.95}50%{transform:translateY(-55vh) translateX(28px) rotate(8deg)}92%{opacity:.95}100%{transform:translateY(-120vh) translateX(-20px) rotate(-8deg);opacity:0}}
+html.hw .sec,html.hw .marcas,html.hw .final,html.hw .band{position:relative}
+.hw-sw{position:absolute;top:0;width:200px;height:auto;pointer-events:none;z-index:2;opacity:.9}
+.hw-sw.tl{left:0}.hw-sw.tr{right:0;transform:scaleX(-1)}
+.hw-sw svg{display:block;width:100%;height:auto}
+.hw-sw.dk svg g{stroke:#2A1B4D}
+.hw-spider{position:absolute;top:0;z-index:3;pointer-events:none;transform-origin:50% 0;animation:hwSpider 4s ease-in-out infinite}
+.hw-spider i{display:block;width:2px;margin:0 auto;background:var(--hwth,#FFF8F0);opacity:.85}
+.hw-spider svg{display:block;width:44px;height:auto;margin:-2px auto 0;filter:drop-shadow(0 0 8px rgba(255,106,26,.7))}
+@keyframes hwSpider{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@media (max-width:760px){.hw-sw{width:110px}.hw-fx .pk{width:44px}.hw-fx .hw-ghost.f3,.hw-fx .hw-bat.f2{display:none}}
+@media (prefers-reduced-motion:reduce){.hw-fx *,.hw-spider{animation:none!important}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://jorddy01.github.io/ixtli-studio-web/#negocio", "name": "ixtli studio", "url": "https://jorddy01.github.io/ixtli-studio-web/", "logo": "https://jorddy01.github.io/ixtli-studio-web/img/favicon-512.png", "image": "https://jorddy01.github.io/ixtli-studio-web/img/og-1200x630.png", "description": "Diseño de páginas web, landings, tiendas en línea, apps y marketing digital para negocios.", "telephone": "+52-56-2957-3030", "areaServed": {"@type": "Country", "name": "México"}, "inLanguage": "es-MX", "sameAs": ["https://instagram.com/ixtli.istudio"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Páginas web y landing pages"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tiendas en línea"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Apps y dashboards"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Marketing digital"}}]}, {"@type": "WebSite", "@id": "https://jorddy01.github.io/ixtli-studio-web/#web", "url": "https://jorddy01.github.io/ixtli-studio-web/", "name": "ixtli studio", "inLanguage": "es-MX", "publisher": {"@id": "https://jorddy01.github.io/ixtli-studio-web/#negocio"}}]}</script>
 </head>
@@ -1820,8 +1837,39 @@ html.hw .hw-web{display:block}
   var hoy=new Date(),ini=new Date(2026,9,19),fin=new Date(2026,10,2);
   var ok=hoy>=ini&&hoy<fin;
   try{ if(sessionStorage.getItem('hwOff')) ok=false; }catch(e){}
-  if(ok){ b.classList.add('on'); document.documentElement.classList.add('hw'); }
+  if(ok){ b.classList.add('on'); document.documentElement.classList.add('hw'); hwDecor(); }
   x.addEventListener('click',function(){ b.classList.remove('on'); try{sessionStorage.setItem('hwOff','1')}catch(e){} });
+  function hwDecor(){
+    // 1) Lucas de la página con disfraz
+    [['.peek img','img/luca-h-laptop.png'],['.nm-cat','img/luca-h-celebra.png'],['.f-cat','img/luca-h-senala.png']].forEach(function(p){
+      var i=document.querySelector(p[0]); if(i) i.src=p[1];
+    });
+    // 2) Capa fija con fantasmas, murciélagos, zombie y calabazas que suben, visible en toda la página
+    var deco=document.querySelector('.hw-deco'); if(!deco) return;
+    var fx=document.createElement('div'); fx.className='hw-fx'; fx.setAttribute('aria-hidden','true');
+    function add(sel,cls,css){ var n=deco.querySelector(sel); if(!n) return; var c=n.cloneNode(true); c.className=n.className.replace(/\bg2\b|\bb2\b/,'')+' '+cls; c.style.cssText=css; fx.appendChild(c); }
+    add('.hw-ghost','f1','top:14%;width:104px;animation-duration:24s;animation-delay:-3s');
+    add('.hw-ghost','f2','top:46%;width:84px;animation-duration:30s;animation-delay:-14s');
+    add('.hw-ghost','f3','top:72%;width:120px;animation-duration:36s;animation-delay:-22s');
+    add('.hw-bat','f1','top:9%;width:88px;animation-duration:17s;animation-delay:-4s');
+    add('.hw-bat','f2','top:38%;width:64px;animation-duration:23s;animation-delay:-11s');
+    add('.hw-zomb','f1','bottom:1%;width:120px;animation-duration:34s;animation-delay:-9s');
+    var pk=deco.querySelector('svg.pk');
+    if(pk) [[8,0],[34,6],[62,11],[88,3]].forEach(function(a){ var c=pk.cloneNode(true); c.setAttribute('class','pk'); c.style.cssText='left:'+a[0]+'%;animation-delay:-'+a[1]+'s;animation-duration:'+(15+a[1])+'s;width:'+(52+a[0]%3*10)+'px'; fx.appendChild(c); });
+    document.body.appendChild(fx);
+    // 3) Telarañas y arañas en cada sección
+    var tl=deco.querySelector('.hw-web.tl'); if(!tl) return;
+    function lum(el){ while(el&&el!==document.documentElement){ var m=(getComputedStyle(el).backgroundColor||'').match(/[\d.]+/g); if(m&&(m.length<4||parseFloat(m[3])>.1)) return (0.299*m[0]+0.587*m[1]+0.114*m[2])/255; el=el.parentElement; } return 1; }
+    var secs=document.querySelectorAll('#nosotros,#servicios,#lema,#proyectos,.marcas,#cotiza,#contacto');
+    secs.forEach(function(sec,idx){
+      var dark=lum(sec)>0.55;
+      ['tl','tr'].forEach(function(side){ var w=document.createElement('div'); w.className='hw-sw '+side+(dark?' dk':''); w.setAttribute('aria-hidden','true'); w.innerHTML=tl.innerHTML; sec.appendChild(w); });
+      var sp=document.createElement('div'); sp.className='hw-spider'; sp.setAttribute('aria-hidden','true');
+      sp.style.left=(14+(idx*23)%70)+'%'; sp.style.setProperty('--hwth',dark?'#2A1B4D':'#FFF8F0'); sp.style.animationDelay='-'+(idx*0.7)+'s';
+      sp.innerHTML='<i style="height:'+(60+(idx*17)%80)+'px"></i><svg viewBox="0 0 44 40"><g stroke="#14122B" stroke-width="2.4" fill="none" stroke-linecap="round"><path d="M14 18L3 8M14 22L2 20M15 26L4 36M16 29L9 39M30 18L41 8M30 22L42 20M29 26L40 36M28 29L35 39"/></g><ellipse cx="22" cy="24" rx="11" ry="12" fill="#14122B"/><circle cx="22" cy="13" r="7" fill="#14122B"/><circle cx="19" cy="12" r="2" fill="#FF6A1A"/><circle cx="25" cy="12" r="2" fill="#FF6A1A"/></svg>';
+      sec.appendChild(sp);
+    });
+  }
 })();
 </script>
 </body>
