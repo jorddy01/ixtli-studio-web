@@ -960,10 +960,18 @@ html.mdl-open{overflow:hidden}
 /* pista de deslizar: solo en celular */
 .sv-swipe{display:none}
 @media (max-width:620px){.sv-swipe{display:flex}}
+/* Banner de temporada: Halloween (se muestra del 25 de octubre al 1 de noviembre; JS lo oculta fuera de esas fechas) */
+.hw-bar{display:none;position:relative;z-index:60;background:var(--noche);color:var(--crema);text-align:center;font:700 .92rem 'Poppins',sans-serif;padding:9px 48px 9px 16px;letter-spacing:.01em}
+.hw-bar.on{display:block}
+.hw-bar b{color:var(--sol)}
+.hw-bar a{color:var(--sol);text-decoration:underline;text-underline-offset:3px;margin-left:6px;white-space:nowrap}
+.hw-bar button{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--crema);font-size:1.2rem;cursor:pointer;opacity:.7;line-height:1;padding:4px}
+@media (max-width:520px){.hw-bar{font-size:.8rem;padding:9px 40px 9px 12px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://jorddy01.github.io/ixtli-studio-web/#negocio", "name": "ixtli studio", "url": "https://jorddy01.github.io/ixtli-studio-web/", "logo": "https://jorddy01.github.io/ixtli-studio-web/img/favicon-512.png", "image": "https://jorddy01.github.io/ixtli-studio-web/img/og-1200x630.png", "description": "Diseño de páginas web, landings, tiendas en línea, apps y marketing digital para negocios.", "telephone": "+52-56-2957-3030", "areaServed": {"@type": "Country", "name": "México"}, "inLanguage": "es-MX", "sameAs": ["https://instagram.com/ixtli.istudio"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Páginas web y landing pages"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tiendas en línea"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Apps y dashboards"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Marketing digital"}}]}, {"@type": "WebSite", "@id": "https://jorddy01.github.io/ixtli-studio-web/#web", "url": "https://jorddy01.github.io/ixtli-studio-web/", "name": "ixtli studio", "inLanguage": "es-MX", "publisher": {"@id": "https://jorddy01.github.io/ixtli-studio-web/#negocio"}}]}</script>
 </head>
 <body>
+<div class="hw-bar" id="hwBar" role="region" aria-label="Temporada Halloween">🎃 <b>Halloween en ixtli studio:</b> ¿tu negocio ya tiene su página? <a href="#cotiza">Cotiza hoy</a><button type="button" id="hwX" aria-label="Cerrar aviso">×</button></div>
 
 <div class="navbar" id="navbar"><i class="fs f1"></i><i class="fs f2"></i><i class="fs f3"></i><i class="fs f4"></i><i class="fs f5"></i><i class="fs f6"></i><div class="top">
       <a class="logo" href="#inicio" aria-label="ixtli, inicio"><svg class="lg go" id="lg" viewBox="0 -18 155 134" role="img" aria-label="ixtli"><g class="letters"><path class="s s1" pathLength="1" d="M12 46V98"/><path class="s s2" pathLength="1" d="M30 46L62 98"/><path class="s s3" pathLength="1" d="M62 46L30 98"/><path class="s s4" pathLength="1" d="M87 24V98"/><path class="s s5" pathLength="1" d="M75 48H99"/><path class="s s6" pathLength="1" d="M111 22V98"/><path class="s s7" pathLength="1" d="M133 46V98"/></g><circle class="dot d1" cx="12" cy="26" r="6.5"/><circle class="dot d2" cx="133" cy="26" r="6.5"/><g transform="rotate(-35 125 64)"><ellipse class="leaf" cx="125" cy="64" rx="11" ry="5.5"/></g><g transform="translate(111 2)"><g class="flower"><g transform="scale(1.0556)"><ellipse cy="-9" rx="4.6" ry="8" fill="#FFB02E" transform="rotate(0)"/><ellipse cy="-9" rx="4.6" ry="8" fill="#FFB02E" transform="rotate(45)"/><ellipse cy="-9" rx="4.6" ry="8" fill="#FFB02E" transform="rotate(90)"/><ellipse cy="-9" rx="4.6" ry="8" fill="#FFB02E" transform="rotate(135)"/><ellipse cy="-9" rx="4.6" ry="8" fill="#FF6B57" transform="rotate(180)"/><ellipse cy="-9" rx="4.6" ry="8" fill="#FF6B57" transform="rotate(225)"/><ellipse cy="-9" rx="4.6" ry="8" fill="#FF6B57" transform="rotate(270)"/><ellipse cy="-9" rx="4.6" ry="8" fill="#FF6B57" transform="rotate(315)"/><circle r="4.2" fill="#FFF8F0"/></g></g></g></svg></a>
@@ -1756,5 +1764,16 @@ html.mdl-open{overflow:hidden}
     </div>
   </div>
 </div>
+<script>
+(function(){
+  var b=document.getElementById('hwBar'),x=document.getElementById('hwX');
+  if(!b)return;
+  var hoy=new Date(),ini=new Date(2026,9,25),fin=new Date(2026,10,2);
+  var ok=hoy>=ini&&hoy<fin;
+  try{ if(sessionStorage.getItem('hwOff')) ok=false; }catch(e){}
+  if(ok){ b.classList.add('on'); }
+  x.addEventListener('click',function(){ b.classList.remove('on'); try{sessionStorage.setItem('hwOff','1')}catch(e){} });
+})();
+</script>
 </body>
 </html>
