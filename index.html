@@ -1030,7 +1030,7 @@ html.hw .sec,html.hw .marcas,html.hw .final,html.hw .band{position:relative}
 .hw-spider i{display:block;width:2px;margin:0 auto;background:var(--hwth,#FFF8F0);opacity:.85}
 .hw-spider svg{display:block;width:38px;height:auto;margin:-2px auto 0;filter:drop-shadow(0 0 7px rgba(255,106,26,.65))}
 @keyframes hwSpider{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
-@media (max-width:760px){.hw-sw{width:78px}.hw-fx .pk{width:30px}.hw-fx .hw-ghost.f2,.hw-fx .hw-bat.f2,.hw-eyes{display:none}}
+@media (max-width:760px){.hw-sw{width:78px}.hw-fx .pk{width:30px}.hw-fx .hw-ghost.hwf2,.hw-fx .hw-bat.hwf2,.hw-eyes{display:none}}
 @media (prefers-reduced-motion:reduce){.hw-fx *,.hw-spider,.hw-sw{animation:none!important}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://jorddy01.github.io/ixtli-studio-web/#negocio", "name": "ixtli studio", "url": "https://jorddy01.github.io/ixtli-studio-web/", "logo": "https://jorddy01.github.io/ixtli-studio-web/img/favicon-512.png", "image": "https://jorddy01.github.io/ixtli-studio-web/img/og-1200x630.png", "description": "Diseño de páginas web, landings, tiendas en línea, apps y marketing digital para negocios.", "telephone": "+52-56-2957-3030", "areaServed": {"@type": "Country", "name": "México"}, "inLanguage": "es-MX", "sameAs": ["https://instagram.com/ixtli.istudio"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Páginas web y landing pages"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tiendas en línea"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Apps y dashboards"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Marketing digital"}}]}, {"@type": "WebSite", "@id": "https://jorddy01.github.io/ixtli-studio-web/#web", "url": "https://jorddy01.github.io/ixtli-studio-web/", "name": "ixtli studio", "inLanguage": "es-MX", "publisher": {"@id": "https://jorddy01.github.io/ixtli-studio-web/#negocio"}}]}</script>
@@ -1865,10 +1865,10 @@ html.hw .sec,html.hw .marcas,html.hw .final,html.hw .band{position:relative}
     var deco=document.querySelector('.hw-deco'); if(!deco) return;
     var fx=document.createElement('div'); fx.className='hw-fx'; fx.setAttribute('aria-hidden','true');
     function add(sel,cls,css){ var n=deco.querySelector(sel); if(!n) return; var c=n.cloneNode(true); c.className=n.className.replace(/\bg2\b|\bb2\b/,'')+' '+cls; c.style.cssText=css; fx.appendChild(c); }
-    add('.hw-ghost','f1','top:16%;width:66px;animation-duration:30s;animation-delay:-3s');
-    add('.hw-ghost','f2','top:58%;width:52px;animation-duration:38s;animation-delay:-18s');
-    add('.hw-bat','f1','top:10%;width:56px;animation-duration:19s;animation-delay:-4s');
-    add('.hw-bat','f2','top:44%;width:44px;animation-duration:25s;animation-delay:-12s');
+    add('.hw-ghost','hwf1','top:16%;width:66px;animation-duration:30s;animation-delay:-3s');
+    add('.hw-ghost','hwf2','top:58%;width:52px;animation-duration:38s;animation-delay:-18s');
+    add('.hw-bat','hwf1','top:10%;width:56px;animation-duration:19s;animation-delay:-4s');
+    add('.hw-bat','hwf2','top:44%;width:44px;animation-duration:25s;animation-delay:-12s');
     var pk=deco.querySelector('svg.pk');
     if(pk) [[10,0],[44,6],[78,11]].forEach(function(a){ var c=pk.cloneNode(true); c.setAttribute('class','pk'); c.style.cssText='left:'+a[0]+'%;animation-delay:-'+a[1]+'s,0s;animation-duration:'+(17+a[1])+'s,2.2s;width:'+(34+a[0]%3*5)+'px'; fx.appendChild(c); });
     var mist=document.createElement('div'); mist.className='hw-mist'; fx.insertBefore(mist,fx.firstChild);
