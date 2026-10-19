@@ -972,7 +972,8 @@ html.hw{--indigo:#2A1B4D;--indigo-d:#1A1030;--coral:#FF6A1A;--sol:#FF9A1F;--ment
 html.hw .navbar,html.hw .hero{background:#2A1B4D}
 html.hw .hw-deco{display:block}
 .hw-deco{display:none;position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
-.hw-deco svg{position:absolute;opacity:.92}
+.hw-deco > svg{position:absolute;opacity:.92}
+.hw-ghost svg,.hw-zomb svg,.hw-bat svg,.hw-web svg{position:static;display:block;width:100%;height:auto}
 .hw-deco .pk{width:86px;height:auto}
 .hw-deco .bt{width:110px;height:auto;opacity:.55}
 @media (max-width:520px){.hw-deco .pk{width:58px}.hw-deco .bt{width:72px}}
