@@ -960,7 +960,7 @@ html.mdl-open{overflow:hidden}
 /* pista de deslizar: solo en celular */
 .sv-swipe{display:none}
 @media (max-width:620px){.sv-swipe{display:flex}}
-/* Banner de temporada: Halloween (se muestra del 25 de octubre al 1 de noviembre; JS lo oculta fuera de esas fechas) */
+/* Banner de temporada: Halloween (se muestra del 19 de octubre al 1 de noviembre; JS lo oculta fuera de esas fechas) */
 .hw-bar{display:none;position:relative;z-index:60;background:var(--noche);color:var(--crema);text-align:center;font:700 .92rem 'Poppins',sans-serif;padding:9px 48px 9px 16px;letter-spacing:.01em}
 .hw-bar.on{display:block}
 .hw-bar b{color:var(--sol)}
@@ -1768,7 +1768,7 @@ html.mdl-open{overflow:hidden}
 (function(){
   var b=document.getElementById('hwBar'),x=document.getElementById('hwX');
   if(!b)return;
-  var hoy=new Date(),ini=new Date(2026,9,25),fin=new Date(2026,10,2);
+  var hoy=new Date(),ini=new Date(2026,9,19),fin=new Date(2026,10,2);
   var ok=hoy>=ini&&hoy<fin;
   try{ if(sessionStorage.getItem('hwOff')) ok=false; }catch(e){}
   if(ok){ b.classList.add('on'); }
