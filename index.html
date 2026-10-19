@@ -967,6 +967,15 @@ html.mdl-open{overflow:hidden}
 .hw-bar a{color:var(--sol);text-decoration:underline;text-underline-offset:3px;margin-left:6px;white-space:nowrap}
 .hw-bar button{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--crema);font-size:1.2rem;cursor:pointer;opacity:.7;line-height:1;padding:4px}
 @media (max-width:520px){.hw-bar{font-size:.8rem;padding:9px 40px 9px 12px}}
+/* Tema Halloween: se activa del 19 de octubre al 1 de noviembre (JS en la parte final). Cambia la paleta y agrega calabazas y murciélagos al hero */
+html.hw{--indigo:#2A1B4D;--indigo-d:#1A1030;--coral:#FF6A1A;--sol:#FF9A1F;--menta:#8BD84A}
+html.hw .navbar,html.hw .hero{background:#2A1B4D}
+html.hw .hw-deco{display:block}
+.hw-deco{display:none;position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.hw-deco svg{position:absolute;opacity:.92}
+.hw-deco .pk{width:86px;height:auto}
+.hw-deco .bt{width:110px;height:auto;opacity:.55}
+@media (max-width:520px){.hw-deco .pk{width:58px}.hw-deco .bt{width:72px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "@id": "https://jorddy01.github.io/ixtli-studio-web/#negocio", "name": "ixtli studio", "url": "https://jorddy01.github.io/ixtli-studio-web/", "logo": "https://jorddy01.github.io/ixtli-studio-web/img/favicon-512.png", "image": "https://jorddy01.github.io/ixtli-studio-web/img/og-1200x630.png", "description": "Diseño de páginas web, landings, tiendas en línea, apps y marketing digital para negocios.", "telephone": "+52-56-2957-3030", "areaServed": {"@type": "Country", "name": "México"}, "inLanguage": "es-MX", "sameAs": ["https://instagram.com/ixtli.istudio"], "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Páginas web y landing pages"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tiendas en línea"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Apps y dashboards"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Marketing digital"}}]}, {"@type": "WebSite", "@id": "https://jorddy01.github.io/ixtli-studio-web/#web", "url": "https://jorddy01.github.io/ixtli-studio-web/", "name": "ixtli studio", "inLanguage": "es-MX", "publisher": {"@id": "https://jorddy01.github.io/ixtli-studio-web/#negocio"}}]}</script>
 </head>
@@ -988,7 +997,13 @@ html.mdl-open{overflow:hidden}
 
 <nav class="mnav" id="mnav" aria-label="Menú móvil"><a href="#nosotros"><span class="mn-n">01</span>Nosotros</a><a href="#servicios"><span class="mn-n">02</span>Servicios</a><a href="#proyectos"><span class="mn-n">03</span>Proyectos</a><a class="mwa" href="https://wa.me/525629573030?text=Hola%20ixtli%20studio%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.2 17.3L2 22l4.8-1.2a11 11 0 0 0 5.2 1.3A11 11 0 0 0 20.5 3.5zM12 20.2a9 9 0 0 1-4.6-1.3l-.3-.2-2.8.7.8-2.7-.2-.3A9 9 0 1 1 12 20.2zm5-6.7c-.3-.1-1.6-.8-1.9-.9s-.5-.1-.7.1-.8.9-.9 1.1-.3.2-.6.1a7.4 7.4 0 0 1-3.7-3.2c-.3-.5.3-.5.8-1.5a.6.6 0 0 0 0-.5l-.9-2c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.8 11.8 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3z"/></svg>Contacta ahora</a><svg class="mn-sp" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" fill="currentColor"/></svg><svg class="mn-sp s2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" fill="currentColor"/></svg><svg class="mn-sp s3" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" fill="currentColor"/></svg><p class="mn-f">Instagram <b>@ixtli.istudio</b><br>WhatsApp 56 2957 3030</p></nav>
 
-<header class="hero" id="inicio">
+<header class="hero" id="inicio" style="position:relative">
+<div class="hw-deco" aria-hidden="true">
+  <svg class="bt" style="left:4%;top:14%;transform:rotate(-12deg)" viewBox="0 0 120 70"><path fill="#0C0716" d="M60 30c-6-10-18-18-34-14 4 6 6 12 4 18-6-4-12-6-18-4 6 6 14 10 22 10-2 8 0 14 6 18 4-6 12-8 20-6 8-2 16 0 20 6 6-4 8-10 6-18 8 0 16-4 22-10-6-2-12 0-18 4-2-6 0-12 4-18-16-4-28 4-34 14z"/></svg>
+  <svg class="bt" style="right:3%;top:58%;transform:rotate(10deg)" viewBox="0 0 120 70"><path fill="#0C0716" d="M60 30c-6-10-18-18-34-14 4 6 6 12 4 18-6-4-12-6-18-4 6 6 14 10 22 10-2 8 0 14 6 18 4-6 12-8 20-6 8-2 16 0 20 6 6-4 8-10 6-18 8 0 16-4 22-10-6-2-12 0-18 4-2-6 0-12 4-18-16-4-28 4-34 14z"/></svg>
+  <svg class="pk" style="right:6%;top:6%" viewBox="0 0 100 90"><ellipse cx="34" cy="50" rx="30" ry="32" fill="#FF6A1A"/><ellipse cx="66" cy="50" rx="30" ry="32" fill="#FF8A3D"/><rect x="45" y="6" width="10" height="16" rx="3" fill="#8BD84A"/><path d="M30 34 L40 46 L24 46Z M70 34 L60 46 L76 46Z M36 62 Q50 74 64 62 L58 68 Q50 72 42 68Z" fill="#0C0716"/></svg>
+  <svg class="pk" style="left:2%;bottom:6%;transform:rotate(-8deg)" viewBox="0 0 100 90"><ellipse cx="34" cy="50" rx="30" ry="32" fill="#FF6A1A"/><ellipse cx="66" cy="50" rx="30" ry="32" fill="#FF8A3D"/><rect x="45" y="6" width="10" height="16" rx="3" fill="#8BD84A"/><path d="M30 34 L40 46 L24 46Z M70 34 L60 46 L76 46Z M36 62 Q50 74 64 62 L58 68 Q50 72 42 68Z" fill="#0C0716"/></svg>
+</div>
   <div class="hero-in">
     
 
@@ -1771,7 +1786,7 @@ html.mdl-open{overflow:hidden}
   var hoy=new Date(),ini=new Date(2026,9,19),fin=new Date(2026,10,2);
   var ok=hoy>=ini&&hoy<fin;
   try{ if(sessionStorage.getItem('hwOff')) ok=false; }catch(e){}
-  if(ok){ b.classList.add('on'); }
+  if(ok){ b.classList.add('on'); document.documentElement.classList.add('hw'); }
   x.addEventListener('click',function(){ b.classList.remove('on'); try{sessionStorage.setItem('hwOff','1')}catch(e){} });
 })();
 </script>
