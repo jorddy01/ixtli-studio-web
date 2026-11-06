@@ -20,9 +20,6 @@
     '.xm-bar a{color:#FFD23F;text-decoration:underline;text-underline-offset:3px;margin-left:6px;white-space:nowrap}' +
     '.xm-bar button{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:0;color:#FFF8F0;font-size:1.2rem;cursor:pointer;opacity:.75;line-height:1;padding:4px}' +
     '@media (max-width:520px){.xm-bar{font-size:.8rem;padding:9px 40px 9px 12px}}' +
-    /* borde de nieve en la parte baja de la barra */
-    'html.xm .navbar::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:9px;pointer-events:none;z-index:4;' +
-      'background:radial-gradient(circle at 50% 0,#fff 0 6px,transparent 7px) 0 0/22px 9px repeat-x}' +
     '.xm-hat{position:absolute;pointer-events:none;z-index:5;transform:rotate(-14deg);filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))}' +
     '.xm-nieve{position:fixed;inset:0;width:100%;height:100%;z-index:48;pointer-events:none}' +
     '.xm-foot{position:relative;z-index:2;text-align:center;font:700 .9rem "Poppins",sans-serif;color:#FFF8F0;padding:10px 16px 18px;opacity:.9}' +
