@@ -1,19 +1,133 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://jorddy01.github.io/ixtli-studio-web/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://jorddy01.github.io/ixtli-studio-web/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jorddy01.github.io/ixtli-studio-web/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jorddy01.github.io/ixtli-studio-web/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jorddy01.github.io/ixtli-studio-web/en/" />
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/oport.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/printika.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/ipam.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/yaavs.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/maquiespel.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/liga.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/bait.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/ejemplos/feed-ixtli.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/gato-laptop.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/gato-celebra.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/gato-senala.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/og-1200x630.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/marcas/oport.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/marcas/maquiespel.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/marcas/printika.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/marcas/ipam.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/marcas/liga.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/marcas/bait.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/gda-oficina.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://jorddy01.github.io/ixtli-studio-web/en/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://jorddy01.github.io/ixtli-studio-web/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://jorddy01.github.io/ixtli-studio-web/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jorddy01.github.io/ixtli-studio-web/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://jorddy01.github.io/ixtli-studio-web/en/" />
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/oport.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/printika.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/ipam.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/yaavs.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/maquiespel.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/liga.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/bait.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/ejemplos/feed-ixtli.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/gato-laptop.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/gato-celebra.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/gato-senala.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/og-1200x630.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/marcas/oport.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/marcas/maquiespel.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/marcas/printika.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/marcas/ipam.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/marcas/liga.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/marcas/bait.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://jorddy01.github.io/ixtli-studio-web/img/gda-oficina.webp</image:loc>
+    </image:image>
   </url>
 </urlset>
