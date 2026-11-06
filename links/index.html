@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ixtli studio | Conecta con nosotros</title>
+<meta name="description" content="WhatsApp, teléfono, correo, sitio web, Instagram y LinkedIn de ixtli studio. Cotiza tu página web gratis.">
+<meta name="theme-color" content="#2C1A60">
+<meta property="og:title" content="ixtli studio | Conecta con nosotros">
+<meta property="og:description" content="Toca el panel y elige cómo contactarnos.">
+<meta property="og:image" content="https://jorddy01.github.io/ixtli-studio-web/img/og-1200x630.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32.png">
+<style>
+:root{
+  --indigo:#3D3AF2; --coral:#FF6B57; --sol:#FFB02E; --menta:#24D6A5; --noche:#14122B; --crema:#FFF8F0;
+  --fondo:#2C1A60;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{min-height:100%}
+body{
+  background:var(--fondo); color:var(--crema);
+  font-family:"Arial Rounded MT Bold","Avenir Next",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  overflow-x:hidden;
+}
+/* fondo con luces que se mueven */
+.aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aurora i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;animation:flota 14s ease-in-out infinite alternate}
+.aurora i:nth-child(1){width:360px;height:360px;background:var(--indigo);left:-90px;top:-60px}
+.aurora i:nth-child(2){width:320px;height:320px;background:var(--coral);right:-110px;top:34%;animation-delay:-5s;opacity:.38}
+.aurora i:nth-child(3){width:300px;height:300px;background:var(--menta);left:20%;bottom:-120px;animation-delay:-9s;opacity:.28}
+@keyframes flota{to{transform:translate(30px,-40px) scale(1.15)}}
+
+.stage{position:relative;z-index:1;max-width:460px;margin:0 auto;padding:max(28px,env(safe-area-inset-top)) 20px max(40px,env(safe-area-inset-bottom))}
+.top{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.top img{height:56px;width:auto}
+.top p{font-size:15px;opacity:.85;letter-spacing:.02em}
+
+/* ------- panel principal ------- */
+.panel{
+  position:relative;display:block;width:100%;margin-top:26px;text-align:left;color:inherit;
+  border:1.5px solid rgba(255,255,255,.22);border-radius:34px;padding:0;overflow:hidden;
+  background:linear-gradient(150deg,rgba(255,255,255,.16),rgba(255,255,255,.05));
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  box-shadow:0 24px 60px rgba(8,6,30,.45), inset 0 1px 0 rgba(255,255,255,.25);
+  transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+  transition:transform .25s ease, box-shadow .3s ease;
+  font:inherit;
+}
+.front:focus-visible,.cerrar:focus-visible{outline:3px solid var(--sol);outline-offset:-4px;border-radius:30px}
+.panel::before{ /* brillo que sigue al dedo / mouse */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.28),transparent 60%);
+  opacity:var(--glow,0);transition:opacity .3s;
+}
+.front{width:100%;background:none;border:0;color:inherit;font:inherit;cursor:pointer;text-align:center;padding:26px 22px 22px;display:flex;flex-direction:column;align-items:center;gap:14px;transition:opacity .35s,transform .35s,max-height .5s,padding .5s}
+.lucawrap{position:relative;width:min(230px,62%);animation:bob 3.2s ease-in-out infinite}
+.luca{display:block;width:100%;height:auto;filter:drop-shadow(0 16px 20px rgba(0,0,0,.35))}
+@keyframes bob{50%{transform:translateY(-10px) rotate(-1.5deg)}}
+.cta{display:flex;align-items:center;gap:12px;background:var(--crema);color:var(--noche);border-radius:999px;padding:14px 22px;font-size:18px;position:relative}
+.cta::after{content:"";position:absolute;inset:-6px;border-radius:999px;border:2px solid var(--sol);opacity:0;animation:pulso 2.2s ease-out infinite}
+@keyframes pulso{0%{opacity:.9;transform:scale(.94)}100%{opacity:0;transform:scale(1.14)}}
+.cta svg{width:22px;height:22px}
+.hint{font-size:13px;opacity:.7}
+
+/* ------- lista que aparece ------- */
+.lista{list-style:none;display:grid;gap:12px;padding:0 16px;max-height:0;overflow:hidden;transition:max-height .7s cubic-bezier(.2,.8,.2,1),padding .5s}
+.lista li{opacity:0;transform:translateY(26px) scale(.94);transition:opacity .45s ease,transform .6s cubic-bezier(.2,1.3,.4,1)}
+.lista a{
+  display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--noche);background:var(--crema);
+  border-radius:22px;padding:14px 16px;box-shadow:0 8px 0 rgba(0,0,0,.18);transition:transform .15s,box-shadow .15s;
+}
+.lista a:active{transform:translateY(6px);box-shadow:0 2px 0 rgba(0,0,0,.18)}
+.ico{flex:none;width:48px;height:48px;border-radius:16px;display:grid;place-items:center;color:#fff}
+.ico svg{width:26px;height:26px}
+.txt{display:flex;flex-direction:column;min-width:0}
+.txt b{font-size:17px;line-height:1.15}
+.txt span{font-size:13.5px;opacity:.7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.go{margin-left:auto;flex:none;width:22px;height:22px;opacity:.45}
+
+.panel.abierto .front{opacity:0;transform:scale(.94);max-height:0;padding-top:0;padding-bottom:0;pointer-events:none}
+.panel.abierto .lista{max-height:900px;padding:18px 16px 18px}
+.panel.abierto .lista li{opacity:1;transform:none}
+.panel.abierto .lista li:nth-child(1){transition-delay:.12s}
+.panel.abierto .lista li:nth-child(2){transition-delay:.20s}
+.panel.abierto .lista li:nth-child(3){transition-delay:.28s}
+.panel.abierto .lista li:nth-child(4){transition-delay:.36s}
+.panel.abierto .lista li:nth-child(5){transition-delay:.44s}
+.panel.abierto .lista li:nth-child(6){transition-delay:.52s}
+.panel.abierto .lista li:nth-child(7){transition-delay:.60s}
+.cerrar{display:none;margin:2px auto 0;padding:6px 14px;font:inherit;font-size:13px;color:var(--crema);background:transparent;border:0;opacity:.75;cursor:pointer;text-decoration:underline}
+.panel.abierto .cerrar{display:block}
+
+/* ------- huellas que cruzan al abrir ------- */
+.huellas{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.huellas svg{position:absolute;width:34px;height:34px;color:var(--sol);opacity:0;transform:scale(.4)}
+.abierto-body .huellas svg{animation:paso .9s forwards}
+@keyframes paso{0%{opacity:0;transform:scale(.4)}35%{opacity:.85;transform:scale(1.1)}100%{opacity:.35;transform:scale(1)}}
+
+.pie{margin-top:22px;text-align:center;font-size:12.5px;opacity:.6}
+.guardar{display:flex;justify-content:center;margin-top:16px}
+.guardar button{font:inherit;font-size:15px;color:var(--noche);background:var(--sol);border:0;border-radius:999px;padding:12px 20px;cursor:pointer;box-shadow:0 6px 0 rgba(0,0,0,.2)}
+.guardar button:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.2)}
+
+.sonido{position:fixed;top:max(14px,env(safe-area-inset-top));right:14px;z-index:5;width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--crema);display:grid;place-items:center;cursor:pointer;padding:0}
+.sonido svg{width:22px;height:22px}
+.sonido .x{opacity:0;transition:opacity .2s}
+.sonido .onda{transition:opacity .2s}
+.sonido.silencio .x{opacity:1}
+.sonido.silencio .onda{opacity:.25}
+.sonido:focus-visible{outline:3px solid var(--sol);outline-offset:3px}
+.front{position:relative}
+.lucawrap.maulla{animation:brinco .75s ease-out}
+@keyframes brinco{0%{transform:scale(1)}25%{transform:translateY(-22px) scale(1.12) rotate(-4deg)}50%{transform:translateY(0) scale(.96) rotate(3deg)}75%{transform:translateY(-8px) scale(1.04) rotate(-2deg)}100%{transform:scale(1)}}
+.miau{position:absolute;top:10px;right:12%;background:var(--crema);color:var(--noche);border-radius:22px 22px 22px 4px;padding:8px 16px;font-size:20px;opacity:0;transform:scale(.4) rotate(8deg);pointer-events:none}
+.miau.ya{animation:globo .95s ease-out}
+@keyframes globo{0%{opacity:0;transform:scale(.4) rotate(8deg)}20%{opacity:1;transform:scale(1.15) rotate(-4deg)}70%{opacity:1;transform:scale(1) rotate(-2deg)}100%{opacity:0;transform:scale(.9) translateY(-10px)}}
+/* ---- tema navideño ---- */
+.nieve{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.gorro{display:none;position:absolute;width:46%;left:27%;top:-9%;transform:rotate(-6deg);filter:drop-shadow(0 4px 4px rgba(0,0,0,.3));pointer-events:none}
+.navidad .gorro{display:block}
+.fiesta{display:none}
+.navidad .fiesta{display:inline-block;margin-top:2px;background:#D32F2F;color:#fff;border-radius:999px;padding:6px 16px;font-size:14px;box-shadow:0 4px 0 rgba(0,0,0,.2)}
+.luces{position:fixed;top:0;left:0;right:0;height:54px;z-index:3;pointer-events:none;list-style:none;display:none;justify-content:space-between;padding:0 8px}
+.navidad .luces{display:flex}
+.luces::before{content:"";position:absolute;left:-10px;right:-10px;top:6px;height:2px;background:#0f0d24;border-radius:2px}
+.luces li{position:relative;width:14px;height:20px;margin-top:8px;border-radius:50%/60% 60% 40% 40%;background:var(--c);box-shadow:0 0 12px 2px var(--c);animation:titilar 1.6s ease-in-out infinite}
+.luces li:nth-child(even){margin-top:14px}
+.luces li::before{content:"";position:absolute;left:3px;top:-6px;width:8px;height:8px;background:#0f0d24;border-radius:2px}
+@keyframes titilar{50%{opacity:.35;box-shadow:0 0 4px 0 var(--c)}}
+.navidad .aurora i:nth-child(2){background:#E53935}
+.navidad .aurora i:nth-child(3){background:#1E9E5A;opacity:.34}
+.navidad .sonido{top:max(60px,calc(env(safe-area-inset-top) + 46px))}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}
+  .huellas svg{opacity:.3;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="huellas" aria-hidden="true" id="huellas"></div>
+
+<button class="sonido silencio" id="sonido" type="button" aria-pressed="true" aria-label="Activar música">
+  <svg viewBox="0 0 24 24" fill="none"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/><path class="onda" d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="x" d="M4 4l16 16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+</button>
+<main class="stage">
+  <header class="top">
+    <img src="../img/logo-ixtli-oscuro.svg" alt="ixtli studio">
+    <p>Páginas web, landings y apps para tu negocio</p>
+    <span class="fiesta">🎄 ¡Felices fiestas! 🎄</span>
+  </header>
+
+  <section class="panel" id="panel">
+    <button class="front" id="abrirBtn" type="button" aria-expanded="false" aria-controls="lista">
+      <span class="miau" id="miau" aria-hidden="true">¡Miau!</span>
+      <span class="lucawrap"><img class="luca" src="../img/gato-laptop.png" alt="Luca, la mascota de ixtli studio, con su laptop">
+      <svg class="gorro" viewBox="0 0 120 90" aria-hidden="true"><path d="M8 74C10 36 36 10 76 8c16 0 24 10 28 22 8 10 10 28 10 44Z" fill="#E53935"/><path d="M30 24C44 14 60 10 76 8" stroke="#FF8A80" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/><rect x="2" y="68" width="118" height="20" rx="10" fill="#fff"/><circle cx="104" cy="30" r="11" fill="#fff"/></svg></span>
+      <span class="cta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5.5a2 2 0 1 1 4 0V11m0-1.5a2 2 0 1 1 4 0V12m0-1a2 2 0 1 1 4 0v4.5A6.5 6.5 0 0 1 14.5 22h-2A6.5 6.5 0 0 1 7 18.4L4.2 14a1.9 1.9 0 0 1 3.2-2L9 13.6"/></svg>
+        Toca y conecta
+      </span>
+      <span class="hint">Aquí están todas las formas de contactarnos</span>
+    </button>
+    <ul class="lista" id="lista">
+      <li><a id="l-whatsapp" href="https://wa.me/525629573030?text=Hola%2C%20vi%20su%20Instagram%20y%20quiero%20cotizar%20mi%20p%C3%A1gina%20web" target="_blank" rel="noopener">
+        <span class="ico" style="background:#24D6A5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5Z"/><path d="M9 8.8c.3 2.6 2.7 5 5.3 5.4l1.3-1.3-2-1.1-.8.6a4 4 0 0 1-1.8-1.8l.6-.8-1.1-2Z" fill="currentColor" stroke="none"/></svg></span>
+        <span class="txt"><b>WhatsApp</b><span>56 2957 3030 · responde rápido</span></span>
+        <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></a></li>
+      <li><a id="l-llamar" href="tel:+525629573030">
+        <span class="ico" style="background:#FFB02E;color:#14122B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></span>
+        <span class="txt"><b>Llamar</b><span>+52 56 2957 3030</span></span>
+        <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></a></li>
+      <li><a id="l-correo" href="mailto:jorddydylan2001@gmail.com?subject=Cotizaci%C3%B3n%20ixtli%20studio">
+        <span class="ico" style="background:#FF6B57"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 8 8 6 8-6"/></svg></span>
+        <span class="txt"><b>Correo</b><span>jorddydylan2001@gmail.com</span></span>
+        <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></a></li>
+      <li><a id="l-web" href="https://jorddy01.github.io/ixtli-studio-web/" target="_blank" rel="noopener">
+        <span class="ico" style="background:#3D3AF2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></span>
+        <span class="txt"><b>Sitio web</b><span>Mira nuestros proyectos</span></span>
+        <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></a></li>
+      <li><a id="l-instagram" href="https://instagram.com/ixtli.istudio" target="_blank" rel="noopener">
+        <span class="ico" style="background:linear-gradient(135deg,#FFB02E,#FF6B57 55%,#8A3FFC)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></span>
+        <span class="txt"><b>Instagram</b><span>@ixtli.istudio</span></span>
+        <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></a></li>
+      <li id="li-linkedin" hidden><a id="l-linkedin" href="#" target="_blank" rel="noopener">
+        <span class="ico" style="background:#0A66C2"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.2 8.6h3V20h-3V8.6Zm1.5-4.6a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5ZM10.4 8.6h2.9v1.6h.04c.4-.76 1.4-1.9 3.2-1.9 3.4 0 4 2.2 4 5.1V20h-3v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V20h-3V8.6Z"/></svg></span>
+        <span class="txt"><b>LinkedIn</b><span>Conectemos profesionalmente</span></span>
+        <svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></a></li>
+    </ul>
+    <button class="cerrar" id="cerrar" type="button">Cerrar panel</button>
+  </section>
+
+  <div class="guardar"><button type="button" id="vcf">Guardar nuestro contacto</button></div>
+  <p class="pie">ixtli studio · Hecho con cariño y con Luca</p>
+</main>
+
+<script>
+(function(){
+  // Pega aquí el enlace de LinkedIn para que aparezca el botón:
+  var LINKEDIN = "";
+
+  var panel = document.getElementById('panel'), body = document.body;
+  var liIn = document.getElementById('li-linkedin');
+  if (LINKEDIN) { document.getElementById('l-linkedin').href = LINKEDIN; liIn.hidden = false; }
+
+  // huellas que cruzan la pantalla al abrir (camino en zigzag)
+  var cont = document.getElementById('huellas');
+  var svg = '<svg viewBox="0 0 64 64" fill="currentColor"><ellipse cx="32" cy="42" rx="14" ry="11"/><ellipse cx="14" cy="26" rx="6" ry="8"/><ellipse cx="26" cy="15" rx="6" ry="8"/><ellipse cx="38" cy="15" rx="6" ry="8"/><ellipse cx="50" cy="26" rx="6" ry="8"/></svg>';
+  var N = 9;
+  for (var i = 0; i < N; i++) {
+    var d = document.createElement('div'); d.innerHTML = svg;
+    var s = d.firstChild;
+    s.style.left = (i % 2 ? 78 : 10) + (i * 1.2) + '%';
+    s.style.top = (8 + i * 10) + '%';
+    s.style.animationDelay = (i * 0.12) + 's';
+    s.style.rotate = (i % 2 ? 18 : -18) + 'deg';
+    cont.appendChild(s);
+  }
+
+  function abrir(v){
+    panel.classList.toggle('abierto', v);
+    document.getElementById('abrirBtn').setAttribute('aria-expanded', v ? 'true' : 'false');
+    body.classList.toggle('abierto-body', v);
+    if (v) { // reinicia animación de huellas
+      cont.querySelectorAll('svg').forEach(function(e){ e.style.animation='none'; void e.offsetWidth; e.style.animation=''; });
+    }
+  }
+  // maullido sintetizado (no necesita archivo de audio)
+  function maullar(){
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+      var ctx = maullar.ctx || (maullar.ctx = new AC()); if (ctx.state === 'suspended') ctx.resume();
+      var t = ctx.currentTime, dur = .8;
+      var o = ctx.createOscillator(); o.type = 'sawtooth';
+      o.frequency.setValueAtTime(430, t);
+      o.frequency.exponentialRampToValueAtTime(860, t + .2);
+      o.frequency.exponentialRampToValueAtTime(660, t + .5);
+      o.frequency.exponentialRampToValueAtTime(380, t + dur);
+      var lfo = ctx.createOscillator(), lg = ctx.createGain(); lfo.frequency.value = 7; lg.gain.value = 14; lfo.connect(lg); lg.connect(o.frequency);
+      var f1 = ctx.createBiquadFilter(); f1.type = 'bandpass'; f1.Q.value = 5;
+      f1.frequency.setValueAtTime(700, t); f1.frequency.linearRampToValueAtTime(1150, t + .25); f1.frequency.linearRampToValueAtTime(600, t + dur);
+      var f2 = ctx.createBiquadFilter(); f2.type = 'bandpass'; f2.Q.value = 7;
+      f2.frequency.setValueAtTime(1800, t); f2.frequency.linearRampToValueAtTime(2700, t + .25); f2.frequency.linearRampToValueAtTime(1400, t + dur);
+      var g = ctx.createGain();
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(1.6, t + .07); g.gain.setValueAtTime(1.6, t + .42); g.gain.exponentialRampToValueAtTime(.001, t + dur);
+      o.connect(f1); o.connect(f2); f1.connect(g); f2.connect(g); g.connect(ctx.destination);
+      o.start(t); lfo.start(t); o.stop(t + dur + .05); lfo.stop(t + dur + .05);
+    } catch (e) {}
+  }
+  // tema navideño: del 1 de nov al 6 de ene (o ?navidad=1 / ?navidad=0)
+  (function(){
+    var hoy = new Date(), mes = hoy.getMonth() + 1, dia = hoy.getDate();
+    var activo = (mes === 11 || mes === 12 || (mes === 1 && dia <= 6));
+    if (/navidad=1/.test(location.search)) activo = true;
+    if (/navidad=0/.test(location.search)) activo = false;
+    if (!activo) return;
+    document.body.classList.add('navidad');
+    var pie = document.querySelector('.pie'); if (pie) pie.textContent = 'ixtli studio · Felices fiestas de parte de Luca 🎁';
+    var ul = document.createElement('ul'); ul.className = 'luces'; ul.setAttribute('aria-hidden', 'true');
+    var cols = ['#FF5A4F', '#FFD23F', '#2FD27A', '#5C7CFF'];
+    for (var i = 0; i < 14; i++) { var li = document.createElement('li'); li.style.setProperty('--c', cols[i % 4]); li.style.animationDelay = (i * 0.23) + 's'; ul.appendChild(li); }
+    document.body.appendChild(ul);
+    var cv = document.createElement('canvas'); cv.className = 'nieve'; cv.setAttribute('aria-hidden', 'true'); document.body.insertBefore(cv, document.body.firstChild);
+    var x = cv.getContext('2d'), w = 0, h = 0, F = [];
+    function ajusta(){ w = cv.width = window.innerWidth; h = cv.height = window.innerHeight; }
+    ajusta(); window.addEventListener('resize', ajusta);
+    for (var j = 0; j < 70; j++) F.push({ x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight, r: 1.5 + Math.random() * 3.2, v: .4 + Math.random() * 1.1, a: Math.random() * 6.28 });
+    var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function pinta(){
+      x.clearRect(0, 0, w, h); x.fillStyle = 'rgba(255,255,255,.85)';
+      F.forEach(function(f){
+        if (!quieto) { f.y += f.v; f.a += .02; f.x += Math.sin(f.a) * .5; if (f.y > h + 5) { f.y = -5; f.x = Math.random() * w; } }
+        x.beginPath(); x.arc(f.x, f.y, f.r, 0, 6.283); x.fill();
+      });
+      if (!quieto) requestAnimationFrame(pinta);
+    }
+    pinta();
+  })();
+
+  // musiquita de fondo generada con código (loop suave, empieza al primer toque)
+  var musica = (function(){
+    var ctx, master, timer, tocando = false, quiere = true, paso = 0, prox = 0;
+    var btn = document.getElementById('sonido');
+    try { if (localStorage.getItem('ixtliMusica') === 'off') quiere = false; } catch (e) {}
+    var BPM = 76, CORCHEA = 60 / BPM / 2;
+    var ACORDES = [[48,52,55,59],[45,48,52,55],[41,45,48,52],[43,47,50,53]];
+    var PENTA = [72,74,76,79,81,84], ARP = [0,2,1,3,2,1,3,2];
+    function f(m){ return 440 * Math.pow(2, (m - 69) / 12); }
+    function nota(m, t, dur, tipo, vol, ataque){
+      var o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = tipo; o.frequency.value = f(m);
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(vol, t + ataque);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      o.connect(g); g.connect(master); o.start(t); o.stop(t + dur + 0.05);
+    }
+    function hat(t){
+      var n = Math.floor(ctx.sampleRate * 0.05), b = ctx.createBuffer(1, n, ctx.sampleRate), d = b.getChannelData(0);
+      for (var i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / n);
+      var s = ctx.createBufferSource(), hp = ctx.createBiquadFilter(), g = ctx.createGain();
+      s.buffer = b; hp.type = 'highpass'; hp.frequency.value = 7000; g.gain.value = 0.035;
+      s.connect(hp); hp.connect(g); g.connect(master); s.start(t);
+    }
+    function cascabel(t){
+      var n = Math.floor(ctx.sampleRate * 0.06), b = ctx.createBuffer(1, n, ctx.sampleRate), d = b.getChannelData(0);
+      for (var i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / n);
+      var s = ctx.createBufferSource(), bp = ctx.createBiquadFilter(), g = ctx.createGain();
+      s.buffer = b; bp.type = 'bandpass'; bp.frequency.value = 5200; bp.Q.value = 1.4; g.gain.value = 0.05;
+      s.connect(bp); bp.connect(g); g.connect(master); s.start(t);
+    }
+    function campanas(k, c, t){
+      if (k === 0 || k === 3 || k === 6) nota(c[k % 4] + 24, t, CORCHEA * 3, 'sine', 0.035, 0.005);
+      if (k % 2 === 0) cascabel(t);
+    }
+    function programar(p, t){
+      var c = ACORDES[Math.floor(p / 8) % 4], k = p % 8;
+      if (k === 0) c.forEach(function(m){ nota(m, t, CORCHEA * 8.5, 'triangle', 0.05, 0.35); });
+      if (k === 0 || k === 4) nota(c[0], t, CORCHEA * 3.6, 'sine', 0.16, 0.02);
+      if (Math.random() < 0.85) nota(c[ARP[k]] + 12, t, CORCHEA * 2.2, 'sine', 0.07, 0.01);
+      if ((k === 2 || k === 5) && Math.random() < 0.5) nota(PENTA[Math.floor(Math.random() * PENTA.length)], t, CORCHEA * 3, 'sine', 0.05, 0.02);
+      if (k % 2 === 1) hat(t);
+      if (document.body.classList.contains('navidad')) campanas(k, c, t);
+    }
+    function actualizar(){
+      btn.classList.toggle('silencio', !tocando);
+      btn.setAttribute('aria-pressed', tocando ? 'false' : 'true');
+      btn.setAttribute('aria-label', tocando ? 'Silenciar música' : 'Activar música');
+    }
+    function iniciar(){
+      try {
+        var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+        if (!ctx) {
+          ctx = new AC(); master = ctx.createGain(); master.gain.value = 0;
+          var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 3200;
+          master.connect(lp); lp.connect(ctx.destination);
+        }
+        if (ctx.state === 'suspended') ctx.resume();
+        var t = ctx.currentTime;
+        master.gain.cancelScheduledValues(t); master.gain.setValueAtTime(master.gain.value, t); master.gain.linearRampToValueAtTime(0.9, t + 2.5);
+        prox = t + 0.9; tocando = true;
+        clearInterval(timer);
+        timer = setInterval(function(){ while (prox < ctx.currentTime + 0.3) { programar(paso, prox); prox += CORCHEA; paso++; } }, 90);
+      } catch (e) {}
+      actualizar();
+    }
+    function parar(){
+      if (!ctx) return;
+      var t = ctx.currentTime;
+      master.gain.cancelScheduledValues(t); master.gain.setValueAtTime(master.gain.value, t); master.gain.linearRampToValueAtTime(0, t + 0.5);
+      tocando = false; clearInterval(timer); actualizar();
+    }
+    btn.addEventListener('click', function(){
+      if (tocando) { quiere = false; parar(); } else { quiere = true; iniciar(); }
+      try { localStorage.setItem('ixtliMusica', quiere ? 'on' : 'off'); } catch (e) {}
+    });
+    document.addEventListener('visibilitychange', function(){
+      if (!ctx) return;
+      if (document.hidden) ctx.suspend(); else if (tocando) ctx.resume();
+    });
+    return { arrancar: function(){ if (quiere && !tocando) iniciar(); } };
+  })();
+
+  var luca = document.querySelector('.lucawrap'), globo = document.getElementById('miau'), ocupado = false;
+  document.getElementById('abrirBtn').addEventListener('click', function(){
+    if (ocupado) return; ocupado = true;
+    maullar();
+    musica.arrancar();
+    luca.classList.remove('maulla'); void luca.offsetWidth; luca.classList.add('maulla');
+    globo.classList.remove('ya'); void globo.offsetWidth; globo.classList.add('ya');
+    setTimeout(function(){ abrir(true); luca.classList.remove('maulla'); ocupado = false; }, rm ? 0 : 750);
+  });
+  document.getElementById('cerrar').addEventListener('click', function(){ abrir(false); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') abrir(false); });
+  if (location.hash === '#abierto') abrir(true);
+
+  // inclinación 3D + brillo
+  var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!rm) {
+    panel.addEventListener('pointermove', function(e){
+      var r = panel.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      panel.style.setProperty('--ry', ((x - .5) * 8) + 'deg');
+      panel.style.setProperty('--rx', ((.5 - y) * 8) + 'deg');
+      panel.style.setProperty('--mx', (x * 100) + '%'); panel.style.setProperty('--my', (y * 100) + '%');
+      panel.style.setProperty('--glow', 1);
+    });
+    panel.addEventListener('pointerleave', function(){
+      panel.style.setProperty('--rx', '0deg'); panel.style.setProperty('--ry', '0deg'); panel.style.setProperty('--glow', 0);
+    });
+  }
+
+  // guardar contacto (.vcf)
+  document.getElementById('vcf').addEventListener('click', function(){
+    var v = ['BEGIN:VCARD','VERSION:3.0','FN:ixtli studio','ORG:ixtli studio','TEL;TYPE=CELL:+525629573030',
+      'EMAIL:jorddydylan2001@gmail.com','URL:https://jorddy01.github.io/ixtli-studio-web/','END:VCARD'].join('\r\n');
+    var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([v], {type:'text/vcard'}));
+    a.download = 'ixtli-studio.vcf'; document.body.appendChild(a); a.click(); a.remove();
+  });
+})();
+</script>
+</body>
+</html>
