@@ -20,21 +20,13 @@
     '.xm-bar a{color:#FFD23F;text-decoration:underline;text-underline-offset:3px;margin-left:6px;white-space:nowrap}' +
     '.xm-bar button{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:0;color:#FFF8F0;font-size:1.2rem;cursor:pointer;opacity:.75;line-height:1;padding:4px}' +
     '@media (max-width:520px){.xm-bar{font-size:.8rem;padding:9px 40px 9px 12px}}' +
-    /* luces y borde de nieve en la parte baja de la barra */
-    'html.xm .navbar::before{content:"";position:absolute;left:0;right:0;bottom:8px;height:14px;pointer-events:none;z-index:4;' +
-      'background:radial-gradient(circle at 9px 9px,#ff5a4f 0 4px,transparent 5px) 0 0/92px 14px repeat-x,' +
-      'radial-gradient(circle at 9px 9px,#ffd23f 0 4px,transparent 5px) 23px 0/92px 14px repeat-x,' +
-      'radial-gradient(circle at 9px 9px,#2fd27a 0 4px,transparent 5px) 46px 0/92px 14px repeat-x,' +
-      'radial-gradient(circle at 9px 9px,#5c7cff 0 4px,transparent 5px) 69px 0/92px 14px repeat-x,' +
-      'linear-gradient(#0f0d24,#0f0d24) 0 2px/100% 2px no-repeat;' +
-      'filter:drop-shadow(0 0 4px rgba(255,220,120,.7));animation:xmLuz 1.8s ease-in-out infinite}' +
+    /* borde de nieve en la parte baja de la barra */
     'html.xm .navbar::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:9px;pointer-events:none;z-index:4;' +
       'background:radial-gradient(circle at 50% 0,#fff 0 6px,transparent 7px) 0 0/22px 9px repeat-x}' +
-    '@keyframes xmLuz{50%{opacity:.5}}' +
     '.xm-hat{position:absolute;pointer-events:none;z-index:5;transform:rotate(-14deg);filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))}' +
     '.xm-nieve{position:fixed;inset:0;width:100%;height:100%;z-index:48;pointer-events:none}' +
     '.xm-foot{position:relative;z-index:2;text-align:center;font:700 .9rem "Poppins",sans-serif;color:#FFF8F0;padding:10px 16px 18px;opacity:.9}' +
-    '@media (prefers-reduced-motion:reduce){html.xm .navbar::before{animation:none}}';
+    '';
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 
   /* ---------- aviso rojo arriba ---------- */
