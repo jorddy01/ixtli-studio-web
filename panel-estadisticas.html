@@ -149,7 +149,7 @@ const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;',
 const fmt=n=>(+n||0).toLocaleString('es-MX');
 const PAGES={'/links':'Página de enlaces (bio)','/':'Inicio (español)','/en/':'Home (inglés)','/en':'Home (inglés)','/index.html':'Inicio (español)'};
 const EVT={wa:'WhatsApp',mail:'Correo',tel:'Teléfono',ig:'Instagram',li:'LinkedIn',cotiza:'Botón "Cotizar esto"',idioma:'Cambio de idioma'};
-const EGGS={flor:'Flor del logo',luca:'Luca maúlla',konami:'Código Konami',juego:'Videojuego oculto'};
+const EGGS={flor:'Flor del logo',luca:'Luca maúlla',konami:'Código Konami',juego:'Videojuego oculto','juego-300':'Juego: llegaron a 300 pts','juego-1000':'Juego: llegaron a 1000 pts'};
 const LANGS={es:'Español',en:'Inglés',fr:'Francés',pt:'Portugués'};
 function refName(h){if(!h)return 'Directo / sin origen';if(/instagram/.test(h))return 'Instagram';if(/google/.test(h))return 'Google';if(/facebook|fb\.com/.test(h))return 'Facebook';if(/linkedin|lnkd/.test(h))return 'LinkedIn';if(/(^|\.)t\.co|twitter|(^|\.)x\.com/.test(h))return 'X (Twitter)';if(/workers\.dev/.test(h))return 'Enlace de Instagram (bio)';if(/whatsapp|wa\.me/.test(h))return 'WhatsApp';if(/bing/.test(h))return 'Bing';if(/duckduckgo/.test(h))return 'DuckDuckGo';return h}
 let CN;try{CN=new Intl.DisplayNames(['es'],{type:'region'})}catch(e){}
