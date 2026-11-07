@@ -16,10 +16,11 @@
     pts: 'Points', best: 'Best', combo: 'Combo', newbest: 'NEW RECORD!',
     over: { bug: 'Ouch! A bug got you 🐞', err: 'Error 404: Luca not found 🙀', pop: 'A pop-up stopped you 😵', spam: 'Spam straight to the face 📧' },
     lv: ['Launch morning', 'Delivery afternoon', 'Deploy night', 'Rainbow mode!'], lvl: 'Level',
+    hit: { bug: 'CRUNCH!', err: '404!', pop: 'POP!', spam: 'SPAM!' },
     pw: { turbo: 'TURBO!', shield: 'Wi-Fi shield!', magnet: 'Flower magnet!' },
     mile: { 100: 'First page published!', 300: 'SEO on!', 600: 'Happy client!', 1000: 'You are a pro!', 1500: 'Legend!' }, shieldHit: 'Shield saved you!',
-    unlock: '🎁 Secret prize unlocked!', prizeT: 'Secret prize', prize: 'A free, no-strings quote for your website. Show your code on WhatsApp.', claim: 'Claim my prize 🎁', code: 'Your code', near: function (n) { return 'So close! Only ' + n + ' points from something special 🎁'; },
-    wonMsg: function (c, p) { return 'Hi ixtli studio! I unlocked Luca\'s secret prize 🎁 My code: ' + c + ' (' + p + ' points). I want my free quote.'; }
+    unlock: '🎁 Secret prize unlocked!', prizeT: 'Secret prize', prize: '10% off your project. Show your code on WhatsApp.', claim: 'Claim my prize 🎁', code: 'Your code', near: function (n) { return 'So close! Only ' + n + ' points from something special 🎁'; },
+    wonMsg: function (c, p) { return 'Hi ixtli studio! I unlocked Luca\'s secret prize 🎁 My code: ' + c + ' (' + p + ' points). I want my 10% discount.'; }
   } : {
     title: 'Luca corre', sub: 'Esquiva bugs, 404, pop-ups y spam. ¡Junta flores y arma combos!', start: 'Empezar',
     keys: ['Espacio / toque', 'saltar (otra vez en el aire = doble salto)'], keys2: ['↓ / deslizar ↓', 'agacharte bajo el spam'],
@@ -27,10 +28,11 @@
     pts: 'Puntos', best: 'Récord', combo: 'Combo', newbest: '¡NUEVO RÉCORD!',
     over: { bug: '¡Auch! Te atrapó un bug 🐞', err: 'Error 404: Luca no encontrada 🙀', pop: '¡Un pop-up te detuvo! 😵', spam: '¡Spam directo a la cara! 📧' },
     lv: ['Mañana de lanzamiento', 'Tarde de entregas', 'Noche de deploy', '¡Modo arcoíris!'], lvl: 'Nivel',
+    hit: { bug: '¡CRUNCH!', err: '¡404!', pop: '¡POP!', spam: '¡SPAM!' },
     pw: { turbo: '¡TURBO!', shield: '¡Escudo Wi-Fi!', magnet: '¡Imán de flores!' },
     mile: { 100: '¡Primera página publicada!', 300: '¡SEO activado!', 600: '¡Cliente feliz!', 1000: '¡Eres un crack!', 1500: '¡Leyenda!' }, shieldHit: '¡El escudo te salvó!',
-    unlock: '🎁 ¡Premio secreto desbloqueado!', prizeT: 'Premio secreto', prize: 'Cotización gratis y sin compromiso para tu página. Muestra tu código por WhatsApp.', claim: 'Reclamar mi premio 🎁', code: 'Tu código', near: function (n) { return '¡Casi! Te faltan ' + n + ' puntos para algo especial 🎁'; },
-    wonMsg: function (c, p) { return '¡Hola ixtli studio! Desbloqueé el premio secreto de Luca 🎁 Mi código: ' + c + ' (' + p + ' puntos). Quiero mi cotización gratis.'; }
+    unlock: '🎁 ¡Premio secreto desbloqueado!', prizeT: 'Premio secreto', prize: '10% de descuento en tu proyecto. Muestra tu código por WhatsApp.', claim: 'Reclamar mi premio 🎁', code: 'Tu código', near: function (n) { return '¡Casi! Te faltan ' + n + ' puntos para algo especial 🎁'; },
+    wonMsg: function (c, p) { return '¡Hola ixtli studio! Desbloqueé el premio secreto de Luca 🎁 Mi código: ' + c + ' (' + p + ' puntos). Quiero mi 10% de descuento.'; }
   };
 
   var open = false, root, cv, ctx, W, H, DPR, GY, raf = 0, last = 0, st = 'ready', lastFocus, G, L, held = false, downHeld = false, paused = false;
@@ -182,7 +184,7 @@
 
   function newGame() {
     G = { t: 0, dist: 0, bonus: 0, score: 0, speed: 360, flowers: 0, combo: 0, maxCombo: 0, mult: 1, lvl: 0, obs: [], flo: [], pw: [], parts: [], txt: [],
-      nextSeg: 560, shake: 0, flash: 0, turbo: 0, shield: 0, magnet: 0, inv: 0, pwNext: 14, slow: 0, dying: 0, bgx: 0, banner: '', bannerT: 0, mileSeen: {}, cause: 'bug', newBest: false, r300: false, r1000: false, pal: clonePal(PAL[0]), cutDone: false };
+      nextSeg: 560, shake: 0, flash: 0, turbo: 0, shield: 0, magnet: 0, inv: 0, pwNext: 14, slow: 0, dying: 0, bgx: 0, banner: '', bannerT: 0, mileSeen: {}, cause: 'bug', death: null, zoom: 0, newBest: false, r300: false, r1000: false, pal: clonePal(PAL[0]), cutDone: false };
     L = { x: W < 700 ? 64 : 100, y: GY, vy: 0, w: 83, h: 96, jumps: 0, air: false, duck: false, duckT: 0, f: 0, ft: 0, coyote: 0, buf: 0, sx: 1, sy: 1 };
     held = false; downHeld = false;
   }
@@ -194,6 +196,7 @@
   }
   function pressJump() {
     if (st !== 'run' || paused) return;
+    if (G.dying > 0) { if (G.death && G.death.t > .7) G.dying = Math.min(G.dying, .02); return; }
     if (!L.air || L.coyote > 0) doJump(1);
     else if (L.jumps < 2) doJump(2);
     else L.buf = .12;
@@ -236,7 +239,7 @@
 
   function update(dt) {
     var rawdt = dt; if (G.slow > 0) { G.slow -= rawdt; dt *= .3; }
-    if (G.dying > 0) { G.dying -= rawdt; if (G.dying <= 0) { finish(); return; } }
+    if (G.dying > 0) { G.dying -= rawdt; deathStep(rawdt); if (G.zoom > 0) G.zoom = Math.max(0, G.zoom - rawdt * .22); if (G.dying <= 0) { finish(); return; } }
     var dead = G.dying > 0;
     G.t += dt;
     var base = Math.min(770, 360 + G.t * 8.5), turbo = G.turbo > 0 ? 1.38 : 1;
@@ -328,11 +331,27 @@
     if (!noScore) { G.bonus += 25; floatText(o.x + o.w / 2, o.y - 6, '+25', '#FFB02E'); }
   }
   function crash(kind) {
-    G.cause = kind === 'drone' ? 'spam' : kind; A.hit(); A.music(false); G.dying = .75; G.slow = .5; G.shake = .7; G.flash = .7;
+    G.cause = kind === 'drone' ? 'spam' : kind; A.hit(); A.music(false); G.dying = 1.55; G.slow = .3; G.shake = .7; G.flash = .7; G.zoom = .09;
     burst(L.x + L.w / 2, L.y - 50, 26, ['#FFB02E', '#FF6B57', '#FFF8F0'], 420);
+    G.death = { t: 0, phase: 'fly', x: L.x + L.w / 2, y: L.y, vx: -105, vy: -640, rot: 0, vr: -13, bounces: 0, word: (T.hit[G.cause] || T.hit.bug), ix: L.x + L.w / 2 + 28, iy: L.y - 60, ang: 0, koT: 0, sT: 0, target: 0 };
+    for (var i = 0; i < 5; i++) G.parts.push({ x: G.death.ix, y: G.death.iy, vx: rnd(-80, 80), vy: rnd(-160, -40), l: .9, m: .9, s: 5, c: '#FFD66B', g: 300 });
+  }
+  function deathStep(dt) {
+    var D = G.death; if (!D) return; D.t += dt; D.ang += dt * 7;
+    if (D.phase === 'fly') {
+      D.x = Math.max(66, D.x + D.vx * dt); D.y += D.vy * dt; D.vy += 1950 * dt; D.rot += D.vr * dt;
+      if (D.y >= GY && D.vy > 0) {
+        D.y = GY;
+        if (D.bounces === 0) { D.bounces = 1; D.vy = -D.vy * .32; D.vx *= .35; D.vr *= .4; puff(D.x, GY, 8); A.land(); G.shake = Math.max(G.shake, .35); }
+        else { D.phase = 'ko'; D.vy = 0; D.vx = 0; D.koT = 0; D.target = Math.round((D.rot / Math.PI - 1) / 2) * 2 * Math.PI + Math.PI; puff(D.x, GY, 10); A.land(); }
+      }
+    } else if (D.phase === 'ko') {
+      D.koT += dt; D.rot += (D.target - D.rot) * Math.min(1, dt * 12);
+      if (D.koT > .62) { D.phase = 'stand'; D.sT = 0; puff(D.x, GY, 12, '#FFB02E'); burst(D.x, GY - 60, 10, ['#FFB02E', '#FFF8F0'], 200); A.shield(); }
+    } else D.sT += dt;
   }
   function finish() {
-    st = 'over'; G.bannerT = 0; G.banner = ''; G.txt = []; var nb = G.score > best; G.newBest = nb;
+    st = 'over'; G.bannerT = 0; G.zoom = 0; G.banner = ''; G.txt = []; var nb = G.score > best; G.newBest = nb;
     if (nb) { best = G.score; try { localStorage.setItem('ixtliJuegoBest', String(best)); } catch (e) {} }
     root.querySelector('#jg-ot').textContent = T.over[G.cause] || T.over.bug;
     root.querySelector('#jg-sc').innerHTML = '<b style="font-size:1.5em;color:#FFB02E">' + G.score + '</b> ' + T.pts + '  ·  ' + T.best + ': ' + best + '  ·  🌼 ' + G.flowers + '  ·  ' + T.combo + ' x' + G.maxCombo;
@@ -341,7 +360,7 @@
     pz.hidden = !won; cl.hidden = !won; nr.hidden = true;
     if (won) { root.querySelector('#jg-code').textContent = prizeCode; cl.href = 'https://wa.me/525629573030?text=' + encodeURIComponent(T.wonMsg(prizeCode, Math.max(best, G.score))); }
     else if (G.score >= 600) { nr.textContent = T.near(PRIZE_AT - G.score); nr.hidden = false; }
-    setTimeout(function () { if (!open || st !== 'over') return; root.querySelector('#jg-over').hidden = false; var b = root.querySelector('#jg-over [data-go]'); if (b) b.focus(); if (nb) { burst(W / 2, 120, 40, ['#FFB02E', '#FF6B57', '#24D6A5', '#fff'], 460); A.level(); } }, 450);
+    setTimeout(function () { if (!open || st !== 'over') return; root.querySelector('#jg-over').hidden = false; var b = root.querySelector('#jg-over [data-go]'); if (b) b.focus(); if (nb) { burst(W / 2, 120, 40, ['#FFB02E', '#FF6B57', '#24D6A5', '#fff'], 460); A.level(); } }, 250);
   }
   function share() {
     var txt = (en ? 'I scored ' + G.score + ' in "Luca runs" 🐾 Can you beat me? ' : 'Hice ' + G.score + ' puntos en "Luca corre" 🐾 ¿Me superas? ') + SITE;
@@ -397,7 +416,41 @@
     ctx.moveTo(-11, 0); ctx.lineTo(-12, -13); ctx.lineTo(-6, -7); ctx.lineTo(0, -16); ctx.lineTo(6, -7); ctx.lineTo(12, -13); ctx.lineTo(11, 0); ctx.closePath(); ctx.fill(); ctx.stroke();
     ctx.fillStyle = '#FF6B57'; ctx.beginPath(); ctx.arc(0, -4, 2.2, 0, 6.3); ctx.fill(); ctx.restore();
   }
+  function starShape(x, y, r) {
+    ctx.beginPath(); for (var i = 0; i < 10; i++) { var rad = i % 2 ? r * .45 : r, an = i * Math.PI / 5 - Math.PI / 2; ctx.lineTo(x + Math.cos(an) * rad, y + Math.sin(an) * rad); } ctx.closePath(); ctx.fill();
+  }
+  function drawDeath() {
+    var D = G.death, pivY = D.y - 29, hx, hy;
+    if (D.phase === 'stand') {
+      var k = Math.min(1, D.sT * 7), sx = .7 + .3 * k + Math.sin(D.sT * 10) * .02 * (1 - k), sy = 1.3 - .3 * k, tilt = Math.sin(D.sT * 8) * .07;
+      ctx.save(); ctx.translate(D.x, GY); ctx.rotate(tilt); ctx.scale(sx, sy);
+      if (sheetOk) ctx.drawImage(sheet, 11 * 208, 0, 208, 240, -L.w * .30, -L.h * 1.04, L.w, L.h * 1.04);
+      if (prizeCode) crownAt(-1, -L.h * 1.04 + 9);
+      ctx.restore(); hx = D.x; hy = GY - L.h * 1.0;
+      if (D.sT < .5) { ctx.fillStyle = 'rgba(255,214,107,' + (1 - D.sT * 2) + ')'; for (var j = 0; j < 3; j++) { var a = D.ang + j * 2.09; starShape(hx + Math.cos(a) * 22, hy - 12 + Math.sin(a) * 7, 6); } }
+    } else {
+      var fr = D.phase === 'fly' ? 3 : 9;
+      ctx.save(); ctx.translate(D.x, pivY); ctx.rotate(D.rot);
+      if (sheetOk) ctx.drawImage(sheet, fr * 208, 0, 208, 240, -L.w / 2, -L.h * .7, L.w, L.h); else { ctx.fillStyle = '#FFB02E'; rr(-30, -30, 60, 60, 12); ctx.fill(); }
+      if (prizeCode) crownAt(21, -L.h * .7 + L.h * .58 - 12);
+      ctx.restore();
+      var c = Math.cos(D.rot), sn = Math.sin(D.rot), ox = 21, oy = -L.h * .7 + L.h * .58; hx = D.x + ox * c - oy * sn; hy = pivY + ox * sn + oy * c;
+      if (D.phase === 'ko') { ctx.fillStyle = '#FFD66B'; for (var q = 0; q < 3; q++) { var an = D.ang + q * 2.09; starShape(hx + Math.cos(an) * 24, hy - 20 + Math.sin(an) * 8, 6.5); } }
+    }
+    // sombra
+    ctx.fillStyle = 'rgba(20,18,43,.22)'; var sc = 1 - Math.min(.5, (GY - D.y) / 260); ctx.beginPath(); ctx.ellipse(D.x + 4, GY + 3, 34 * sc, 5 * sc, 0, 0, 6.3); ctx.fill();
+    // anillo de impacto + globo de cómic
+    var rt = D.t; if (rt < .4) { ctx.strokeStyle = 'rgba(255,255,255,' + (1 - rt / .4) + ')'; ctx.lineWidth = 4; ctx.beginPath(); ctx.arc(D.ix, D.iy, 12 + rt * 190, 0, 6.3); ctx.stroke(); }
+    if (rt < 1.05) {
+      var sK = Math.min(1, rt * 9) * (rt < .8 ? 1 : Math.max(0, (1.05 - rt) / .25)), bx = D.ix + 10, by = D.iy - 46 - rt * 14;
+      ctx.save(); ctx.translate(bx, by); ctx.rotate(-.14 + Math.sin(rt * 30) * .03); ctx.scale(sK * (1 + Math.max(0, .25 - rt) * 1.6), sK * (1 + Math.max(0, .25 - rt) * 1.6));
+      ctx.fillStyle = '#FFD66B'; ctx.strokeStyle = '#14122B'; ctx.lineWidth = 4; ctx.lineJoin = 'round'; ctx.beginPath();
+      for (var i = 0; i < 16; i++) { var rd = i % 2 ? 30 : 52, a2 = i * Math.PI / 8; ctx.lineTo(Math.cos(a2) * rd * 1.35, Math.sin(a2) * rd * .85); } ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#14122B'; ctx.font = '800 20px Poppins,system-ui,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(D.word, 0, 2); ctx.restore();
+    }
+  }
   function drawLuca() {
+    if (G.death) { drawDeath(); return; }
     if (!sheetOk) { ctx.fillStyle = '#FFB02E'; rr(L.x, L.y - L.h, L.w, L.h, 14); ctx.fill(); return; }
     var sx = L.sx * (L.duck ? 1.12 : 1), sy = L.sy * (L.duck ? .62 : 1), fx = L.x + L.w / 2, tilt = L.air ? Math.max(-.28, Math.min(.28, L.vy / 3200)) : 0;
     function one(alpha, dx) {
@@ -433,6 +486,7 @@
     if (!G) return;
     var sh = (!reduce && G.shake > 0) ? G.shake * 14 : 0;
     ctx.save(); if (sh) ctx.translate(rnd(-sh, sh), rnd(-sh, sh));
+    if (!reduce && G.zoom > 0 && G.death) { ctx.translate(G.death.ix, G.death.iy); ctx.scale(1 + G.zoom, 1 + G.zoom); ctx.translate(-G.death.ix, -G.death.iy); }
     bg();
     if (G.turbo > 0) { ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.lineWidth = 2; for (var i = 0; i < 14; i++) { var lx = ((i * 97 - G.t * 1400) % (W + 200) + (W + 200)) % (W + 200) - 100, ly = 20 + (i * 53) % (GY - 30); ctx.beginPath(); ctx.moveTo(lx, ly); ctx.lineTo(lx + 60, ly); ctx.stroke(); } }
     G.flo.forEach(function (f) { if (f.star) star(f.x, f.y + Math.sin(f.a) * 4, f.r, Math.sin(f.a) * .3); else flower(f.x, f.y + Math.sin(f.a) * 4, f.r, f.a * .4, '#FFB02E', '#FF6B57'); });
@@ -453,7 +507,7 @@
     if (!open) return;
     if (!last) last = ts; var dt = Math.min(.05, (ts - last) / 1000); last = ts;
     if (st === 'run' && !paused) update(dt);
-    else if (st === 'over') { G.parts.forEach(function (pa) { pa.l -= dt; pa.x += pa.vx * dt; pa.y += pa.vy * dt; pa.vy += pa.g * dt; }); G.parts = G.parts.filter(function (p) { return p.l > 0; }); G.flash = Math.max(0, G.flash - dt * 2); G.shake = 0; }
+    else if (st === 'over') { G.parts.forEach(function (pa) { pa.l -= dt; pa.x += pa.vx * dt; pa.y += pa.vy * dt; pa.vy += pa.g * dt; }); G.parts = G.parts.filter(function (p) { return p.l > 0; }); G.flash = Math.max(0, G.flash - dt * 2); G.shake = 0; deathStep(dt); }
     draw();
     raf = requestAnimationFrame(loop);
   }
