@@ -17,7 +17,9 @@
     over: { bug: 'Ouch! A bug got you 🐞', err: 'Error 404: Luca not found 🙀', pop: 'A pop-up stopped you 😵', spam: 'Spam straight to the face 📧' },
     lv: ['Launch morning', 'Delivery afternoon', 'Deploy night', 'Rainbow mode!'], lvl: 'Level',
     pw: { turbo: 'TURBO!', shield: 'Wi-Fi shield!', magnet: 'Flower magnet!' },
-    mile: { 100: 'First page published!', 300: 'SEO on!', 600: 'Happy client!', 1000: 'You are a pro!', 1500: 'Legend!' }, shieldHit: 'Shield saved you!'
+    mile: { 100: 'First page published!', 300: 'SEO on!', 600: 'Happy client!', 1000: 'You are a pro!', 1500: 'Legend!' }, shieldHit: 'Shield saved you!',
+    unlock: '🎁 Secret prize unlocked!', prizeT: 'Secret prize', prize: 'A free, no-strings quote for your website. Show your code on WhatsApp.', claim: 'Claim my prize 🎁', code: 'Your code', near: function (n) { return 'So close! Only ' + n + ' points from something special 🎁'; },
+    wonMsg: function (c, p) { return 'Hi ixtli studio! I unlocked Luca\'s secret prize 🎁 My code: ' + c + ' (' + p + ' points). I want my free quote.'; }
   } : {
     title: 'Luca corre', sub: 'Esquiva bugs, 404, pop-ups y spam. ¡Junta flores y arma combos!', start: 'Empezar',
     keys: ['Espacio / toque', 'saltar (otra vez en el aire = doble salto)'], keys2: ['↓ / deslizar ↓', 'agacharte bajo el spam'],
@@ -26,12 +28,16 @@
     over: { bug: '¡Auch! Te atrapó un bug 🐞', err: 'Error 404: Luca no encontrada 🙀', pop: '¡Un pop-up te detuvo! 😵', spam: '¡Spam directo a la cara! 📧' },
     lv: ['Mañana de lanzamiento', 'Tarde de entregas', 'Noche de deploy', '¡Modo arcoíris!'], lvl: 'Nivel',
     pw: { turbo: '¡TURBO!', shield: '¡Escudo Wi-Fi!', magnet: '¡Imán de flores!' },
-    mile: { 100: '¡Primera página publicada!', 300: '¡SEO activado!', 600: '¡Cliente feliz!', 1000: '¡Eres un crack!', 1500: '¡Leyenda!' }, shieldHit: '¡El escudo te salvó!'
+    mile: { 100: '¡Primera página publicada!', 300: '¡SEO activado!', 600: '¡Cliente feliz!', 1000: '¡Eres un crack!', 1500: '¡Leyenda!' }, shieldHit: '¡El escudo te salvó!',
+    unlock: '🎁 ¡Premio secreto desbloqueado!', prizeT: 'Premio secreto', prize: 'Cotización gratis y sin compromiso para tu página. Muestra tu código por WhatsApp.', claim: 'Reclamar mi premio 🎁', code: 'Tu código', near: function (n) { return '¡Casi! Te faltan ' + n + ' puntos para algo especial 🎁'; },
+    wonMsg: function (c, p) { return '¡Hola ixtli studio! Desbloqueé el premio secreto de Luca 🎁 Mi código: ' + c + ' (' + p + ' puntos). Quiero mi cotización gratis.'; }
   };
 
   var open = false, root, cv, ctx, W, H, DPR, GY, raf = 0, last = 0, st = 'ready', lastFocus, G, L, held = false, downHeld = false, paused = false;
   var sheet = new Image(), sheetOk = false; sheet.onload = function () { sheetOk = true; }; sheet.src = BASE + 'img/gato-sheet.webp';
   var best = 0; try { best = +localStorage.getItem('ixtliJuegoBest') || 0; } catch (e) {}
+  var prizeCode = ''; try { prizeCode = localStorage.getItem('ixtliJuegoPremio') || ''; } catch (e) {}
+  var PRIZE_AT = 1000;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function rnd(a, b) { return a + Math.random() * (b - a); }
   function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
@@ -99,16 +105,23 @@
     '.jg-ib:hover{background:rgba(255,255,255,.34)}.jg-ib:focus-visible{outline:3px solid #FFB02E}' +
     '.jg-msg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:16px;color:#fff;font-family:"Poppins",system-ui,sans-serif;background:rgba(20,18,43,.5);z-index:3}' +
     '.jg-msg[hidden]{display:none}' +
+    '.jg-msg{overflow-y:auto;justify-content:safe center}' +
+    '@media (max-width:560px){.jg-msg{gap:5px;padding:8px 10px 14px}#jg-sc{font-size:.72rem!important}.jg-msg h2{font-size:1.2rem}.jg-prize{padding:6px 10px;border-radius:14px}.jg-prize b{font-size:.92rem}.jg-prize code{font-size:.9rem;padding:2px 9px;margin-top:2px}.jg-btns{gap:6px;margin-top:2px}.jg-btn{padding:9px 14px;font-size:.78rem}.jg-new{font-size:.7rem;padding:3px 10px}.jg-msg p{font-size:.78rem}}' +
     '.jg-msg h2{font-size:clamp(1.4rem,5.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.1}' +
     '.jg-msg h2 em{font-style:normal;color:#FFB02E}' +
     '.jg-msg p{font:700 clamp(.82rem,2.5vw,1.02rem) "Nunito",system-ui,sans-serif;opacity:.95;max-width:32em}' +
     '.jg-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:4px}' +
     '.jg-btn{font:800 clamp(.85rem,2.7vw,1.02rem) "Poppins",system-ui,sans-serif;border:0;border-radius:99px;padding:12px 22px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .15s}' +
     '.jg-btn:hover{transform:translateY(-2px)}.jg-btn:focus-visible{outline:3px solid #fff;outline-offset:2px}' +
+    '.jg-btn[hidden],.jg-prize[hidden]{display:none!important}' +
     '.jg-a{background:#FFB02E;color:#14122B}.jg-b{background:#24D6A5;color:#14122B}.jg-c{background:rgba(255,255,255,.2);color:#fff}' +
     '.jg-keys{display:grid;gap:6px;margin-top:2px;font:700 clamp(.72rem,2.2vw,.88rem) "Nunito",system-ui,sans-serif}' +
     '.jg-keys span{background:rgba(255,255,255,.14);border-radius:10px;padding:6px 12px}.jg-keys b{color:#FFB02E}' +
     '.jg-new{display:inline-block;background:#FF6B57;color:#fff;font:800 .85rem "Poppins",system-ui;border-radius:99px;padding:5px 14px;animation:jgpop .6s ease infinite alternate}@keyframes jgpop{to{transform:scale(1.12) rotate(-3deg)}}' +
+    '.jg-gold{background:linear-gradient(135deg,#FFD66B,#FFB02E);color:#14122B;box-shadow:0 0 0 3px rgba(255,255,255,.35),0 8px 24px rgba(255,176,46,.5);animation:jgglow 1.6s ease-in-out infinite alternate}@keyframes jgglow{to{box-shadow:0 0 0 6px rgba(255,255,255,.2),0 8px 34px rgba(255,176,46,.85)}}' +
+    '.jg-prize{background:rgba(255,255,255,.14);border:2px dashed #FFB02E;border-radius:18px;padding:10px 16px;max-width:30em;font:700 clamp(.78rem,2.3vw,.95rem) "Nunito",system-ui,sans-serif}' +
+    '.jg-prize b{display:block;font:800 clamp(.95rem,3vw,1.15rem) "Poppins",system-ui;color:#FFB02E;margin-bottom:2px}' +
+    '.jg-prize code{display:inline-block;margin-top:4px;background:#14122B;color:#FFD66B;border-radius:10px;padding:4px 12px;font:800 1.05rem ui-monospace,Menlo,monospace;letter-spacing:.08em}' +
     '.jg-toast{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:#FFF8F0;color:#14122B;font:800 .85rem "Poppins",system-ui;padding:9px 16px;border-radius:99px;z-index:6;pointer-events:none;opacity:0;transition:opacity .25s}.jg-toast.on{opacity:1}';
   document.head.appendChild(css);
 
@@ -121,8 +134,8 @@
       '<div class="jg-keys"><span><b>' + T.keys[0] + '</b> · ' + T.keys[1] + '</span><span><b>' + T.keys2[0] + '</b> · ' + T.keys2[1] + '</span></div>' +
       '<div class="jg-btns"><button class="jg-btn jg-a" type="button" data-go>' + T.start + '</button></div></div>' +
       '<div class="jg-msg" id="jg-pause" hidden><h2>⏸ ' + T.pause + '</h2><p>' + T.resume + '</p></div>' +
-      '<div class="jg-msg" id="jg-over" hidden><div id="jg-nb" hidden><span class="jg-new">' + T.newbest + '</span></div><h2 id="jg-ot"></h2><p id="jg-sc"></p>' +
-      '<div class="jg-btns"><button class="jg-btn jg-a" type="button" data-go>' + T.again + '</button><a class="jg-btn jg-b" href="' + WA + '" target="_blank" rel="noopener">' + T.cta + '</a><button class="jg-btn jg-c" type="button" data-share>' + T.share + '</button></div></div>' +
+      '<div class="jg-msg" id="jg-over" hidden><div id="jg-nb" hidden><span class="jg-new">' + T.newbest + '</span></div><h2 id="jg-ot"></h2><p id="jg-sc"></p><div class="jg-prize" id="jg-prize" hidden><b>🎁 ' + T.prizeT + '</b><span>' + T.prize + '</span><br><span>' + T.code + ': </span><code id="jg-code"></code></div><p id="jg-near" hidden></p>' +
+      '<div class="jg-btns"><button class="jg-btn jg-a" type="button" data-go>' + T.again + '</button><a class="jg-btn jg-gold" id="jg-claim" href="#" target="_blank" rel="noopener" hidden>' + T.claim + '</a><a class="jg-btn jg-b" id="jg-cta" href="' + WA + '" target="_blank" rel="noopener">' + T.cta + '</a><button class="jg-btn jg-c" type="button" data-share>' + T.share + '</button></div></div>' +
       '<div class="jg-toast" id="jg-toast"></div></div>';
     document.body.appendChild(root);
     cv = root.querySelector('canvas'); ctx = cv.getContext('2d');
@@ -132,6 +145,7 @@
     sb.addEventListener('click', function (e) { e.stopPropagation(); var o = A.toggle(); sb.textContent = o ? '🔊' : '🔇'; if (o && st === 'run' && !paused) A.music(true); });
     root.addEventListener('mousedown', function (e) { if (e.target === root) close(); });
     root.querySelectorAll('[data-go]').forEach(function (b) { b.addEventListener('click', function (e) { e.stopPropagation(); begin(); }); });
+    root.querySelector('#jg-claim').addEventListener('click', function (e) { e.stopPropagation(); try { if (window.__ixtliEgg) window.__ixtliEgg('juego-premio'); } catch (x) {} });
     root.querySelector('[data-share]').addEventListener('click', function (e) { e.stopPropagation(); share(); });
     root.querySelector('#jg-pause').addEventListener('pointerdown', function (e) { e.preventDefault(); togglePause(); });
     root.querySelector('#jg-start').addEventListener('pointerdown', function (e) { if (e.target.closest('button,a')) return; e.preventDefault(); A.init(); begin(); });
@@ -245,6 +259,7 @@
       L.sx += (1 - L.sx) * Math.min(1, dt * 14); L.sy += (1 - L.sy) * Math.min(1, dt * 14);
       L.ft += dt * (sp / 38); L.f = L.air ? 3 : Math.floor(L.ft) % 10;
       if (!L.air && Math.random() < dt * 14) puff(L.x + 20, GY, 1);
+      if (prizeCode && Math.random() < dt * 9) G.parts.push({ x: L.x + L.w * .6 + rnd(-14, 14), y: L.y - L.h * .8 + rnd(-10, 10), vx: rnd(-40, 20), vy: rnd(-70, -20), l: rnd(.4, .8), m: .8, s: rnd(1.8, 3.4), c: pick(['#FFD66B', '#FFF8F0', '#FFB02E']), g: 60 });
     }
     // generación
     G.nextSeg -= sp * dt; if (G.nextSeg <= 0 && !dead) spawnSeg();
@@ -293,14 +308,20 @@
     if (!dead) {
       var ns = Math.floor(G.dist / 18) + G.bonus;
       if (ns !== G.score) {
-        for (var m in T.mile) { if (!G.mileSeen[m] && ns >= +m) { G.mileSeen[m] = 1; G.banner = T.mile[m]; G.bannerT = 1.9; } }
+        for (var m in T.mile) { if (!G.mileSeen[m] && ns >= +m) { G.mileSeen[m] = 1; if (+m !== PRIZE_AT) { G.banner = T.mile[m]; G.bannerT = 1.9; } } }
         G.score = ns;
         var lv = levelOf(ns);
         if (lv > G.lvl) { G.lvl = lv; G.banner = T.lvl + ' ' + (lv + 1) + ' · ' + T.lv[lv % 4]; G.bannerT = 2.4; A.level(); G.flash = .6; burst(W / 2, 80, 30, ['#FFB02E', '#FF6B57', '#24D6A5', '#fff', '#8a5cff'], 420); }
         if (!G.r300 && ns >= 300) { G.r300 = true; try { if (window.__ixtliEgg) window.__ixtliEgg('juego-300'); } catch (e) {} }
-        if (!G.r1000 && ns >= 1000) { G.r1000 = true; try { if (window.__ixtliEgg) window.__ixtliEgg('juego-1000'); } catch (e) {} }
+        if (!G.r1000 && ns >= PRIZE_AT) { G.r1000 = true; try { if (window.__ixtliEgg) window.__ixtliEgg('juego-1000'); } catch (e) {} unlockPrize(); }
       }
     }
+  }
+  function makeCode() { var a = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789', c = 'LUCA-'; for (var i = 0; i < 4; i++) c += a.charAt(Math.floor(Math.random() * a.length)); return c; }
+  function unlockPrize() {
+    if (!prizeCode) { prizeCode = makeCode(); try { localStorage.setItem('ixtliJuegoPremio', prizeCode); } catch (e) {} }
+    G.banner = T.unlock; G.bannerT = 3.2; G.flash = .7; A.level(); A.star();
+    burst(W / 2, 90, 46, ['#FFD66B', '#FFB02E', '#FFF8F0', '#FF6B57', '#24D6A5'], 480);
   }
   function smash(o, i, noScore) {
     G.obs.splice(i, 1); A.smash(); G.shake = .25; burst(o.x + o.w / 2, o.y + o.h / 2, 14, ['#FF6B57', '#FFB02E', '#FFF8F0', '#14122B'], 360);
@@ -311,11 +332,15 @@
     burst(L.x + L.w / 2, L.y - 50, 26, ['#FFB02E', '#FF6B57', '#FFF8F0'], 420);
   }
   function finish() {
-    st = 'over'; var nb = G.score > best; G.newBest = nb;
+    st = 'over'; G.bannerT = 0; G.banner = ''; G.txt = []; var nb = G.score > best; G.newBest = nb;
     if (nb) { best = G.score; try { localStorage.setItem('ixtliJuegoBest', String(best)); } catch (e) {} }
     root.querySelector('#jg-ot').textContent = T.over[G.cause] || T.over.bug;
     root.querySelector('#jg-sc').innerHTML = '<b style="font-size:1.5em;color:#FFB02E">' + G.score + '</b> ' + T.pts + '  ·  ' + T.best + ': ' + best + '  ·  🌼 ' + G.flowers + '  ·  ' + T.combo + ' x' + G.maxCombo;
     root.querySelector('#jg-nb').hidden = !nb;
+    var pz = root.querySelector('#jg-prize'), cl = root.querySelector('#jg-claim'), nr = root.querySelector('#jg-near'), won = !!prizeCode;
+    pz.hidden = !won; cl.hidden = !won; nr.hidden = true;
+    if (won) { root.querySelector('#jg-code').textContent = prizeCode; cl.href = 'https://wa.me/525629573030?text=' + encodeURIComponent(T.wonMsg(prizeCode, Math.max(best, G.score))); }
+    else if (G.score >= 600) { nr.textContent = T.near(PRIZE_AT - G.score); nr.hidden = false; }
     setTimeout(function () { if (!open || st !== 'over') return; root.querySelector('#jg-over').hidden = false; var b = root.querySelector('#jg-over [data-go]'); if (b) b.focus(); if (nb) { burst(W / 2, 120, 40, ['#FFB02E', '#FF6B57', '#24D6A5', '#fff'], 460); A.level(); } }, 450);
   }
   function share() {
@@ -367,12 +392,19 @@
     ctx.fillStyle = col; ctx.beginPath(); ctx.arc(w.x, y, 19, 0, 6.3); ctx.fill(); ctx.strokeStyle = '#FFF8F0'; ctx.lineWidth = 3; ctx.stroke();
     ctx.font = '19px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#fff'; ctx.fillText(w.k === 'turbo' ? '⚡' : w.k === 'shield' ? '📶' : '🧲', w.x, y + 1);
   }
+  function crownAt(x, y) {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(-.12); ctx.fillStyle = '#FFD66B'; ctx.strokeStyle = '#B8741A'; ctx.lineWidth = 1.6; ctx.beginPath();
+    ctx.moveTo(-11, 0); ctx.lineTo(-12, -13); ctx.lineTo(-6, -7); ctx.lineTo(0, -16); ctx.lineTo(6, -7); ctx.lineTo(12, -13); ctx.lineTo(11, 0); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#FF6B57'; ctx.beginPath(); ctx.arc(0, -4, 2.2, 0, 6.3); ctx.fill(); ctx.restore();
+  }
   function drawLuca() {
     if (!sheetOk) { ctx.fillStyle = '#FFB02E'; rr(L.x, L.y - L.h, L.w, L.h, 14); ctx.fill(); return; }
     var sx = L.sx * (L.duck ? 1.12 : 1), sy = L.sy * (L.duck ? .62 : 1), fx = L.x + L.w / 2, tilt = L.air ? Math.max(-.28, Math.min(.28, L.vy / 3200)) : 0;
     function one(alpha, dx) {
       ctx.save(); ctx.globalAlpha = alpha; ctx.translate(fx + dx, L.y); ctx.rotate(tilt); ctx.scale(sx, sy);
-      ctx.drawImage(sheet, L.f * 208, 0, 208, 240, -L.w / 2, -L.h, L.w, L.h); ctx.restore();
+      ctx.drawImage(sheet, L.f * 208, 0, 208, 240, -L.w / 2, -L.h, L.w, L.h);
+      if (prizeCode) crownAt(L.w * .1, -L.h * .66);
+      ctx.restore();
     }
     if (G.turbo > 0) { one(.18, -46); one(.3, -26); ctx.save(); ctx.shadowColor = '#FFB02E'; ctx.shadowBlur = 24; one(1, 0); ctx.restore(); }
     else if (G.inv > 0 && Math.floor(G.t * 20) % 2) { one(.35, 0); }
