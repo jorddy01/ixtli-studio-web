@@ -1463,7 +1463,7 @@ html.hw .sec,html.hw .marcas,html.hw .final,html.hw .band{position:relative}
 
   /* animacion del logo: se repite al pasar el mouse */
   var lg=document.getElementById('lg');
-  if(lg){lg.parentNode.addEventListener('mouseenter',function(){lg.classList.remove('go');void lg.getBoundingClientRect();lg.classList.add('go')})}
+  if(lg){var lgT=Date.now();lg.parentNode.addEventListener('mouseenter',function(){var n=Date.now();if(n-lgT<6000)return;lgT=n;lg.classList.remove('go');void lg.getBoundingClientRect();lg.classList.add('go')})}
 
   /* selector de proyectos del hero */
   var data=[['Grupo Oport','Tienda en línea','c0','img/oport.webp'],['Printika','Tienda en línea','c1','img/printika.webp'],['IPAM Proyectos','Sitio corporativo','c2','img/ipam.webp'],['YAAVS','Sitio de ventas','c3','img/yaavs.webp'],['Maqui Espel','Sitio industrial','c4','img/maquiespel.webp']];
@@ -1959,6 +1959,6 @@ var bg=document.getElementById('burger');if(bg)bg.addEventListener('click',funct
 })();
 </script>
 <script defer src="stats.js?v=1"></script>
-<script defer src="huevos.js?v=1"></script>
+<script defer src="huevos.js?v=2"></script>
 </body>
 </html>

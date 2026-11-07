@@ -167,6 +167,8 @@
   document.addEventListener('click', function (e) {
     var now = Date.now();
     if (e.target && e.target.closest && e.target.closest('#lg,.logo')) {
+      // ya estás arriba: no saltes ni repitas la animación del logo con cada clic
+      if ((window.scrollY || 0) < 80) e.preventDefault();
       logoClicks = logoClicks.filter(function (t) { return now - t < 3000; }); logoClicks.push(now);
       if (logoClicks.length >= 5) { logoClicks = []; florece(); }
       return;
