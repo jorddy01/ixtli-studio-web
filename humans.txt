@@ -1,0 +1,14 @@
+/* EQUIPO / TEAM */
+  Diseño y desarrollo: Jorddy Dylan Rivera López
+  Estudio: ixtli studio
+  Instagram: @ixtli.istudio
+  Ubicación: México
+
+/* SITIO / SITE */
+  Última actualización: 2026/11/07
+  Hecho con: HTML, CSS y JavaScript, sin plantillas genéricas
+  Mascota oficial: Luca 🐾
+  Hecho con cariño en México 🌸
+
+/* PISTA */
+  Escribe el nombre de quien lo creó en el teclado ✍️
