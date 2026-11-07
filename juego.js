@@ -98,14 +98,14 @@
   /* ================= ESTILOS Y DOM ================= */
   var css = document.createElement('style');
   css.textContent =
-    '#jg{position:fixed;inset:0;z-index:100001;display:none;align-items:center;justify-content:center;background:rgba(14,12,34,.86);backdrop-filter:blur(6px);padding:10px;-webkit-tap-highlight-color:transparent}' +
+    '#jg{position:fixed;inset:0;z-index:100001;display:none;align-items:center;justify-content:center;background:rgba(34,31,140,.74);backdrop-filter:blur(6px);padding:10px;-webkit-tap-highlight-color:transparent}' +
     '#jg.on{display:flex;animation:jgin .25s ease-out}@keyframes jgin{from{opacity:0}to{opacity:1}}' +
     '.jg-box{position:relative;width:min(980px,100%);outline:none;border-radius:26px;overflow:hidden;background:#3D3AF2;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 4px #FFB02E;user-select:none;-webkit-user-select:none;touch-action:none}' +
     '#jg canvas{display:block;width:100%;height:auto;touch-action:none}' +
     '.jg-top{position:absolute;right:10px;top:10px;display:flex;gap:8px;z-index:4}' +
     '.jg-ib{width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.2);color:#fff;font:700 1.1rem/1 system-ui;cursor:pointer;display:grid;place-items:center}' +
     '.jg-ib:hover{background:rgba(255,255,255,.34)}.jg-ib:focus-visible{outline:3px solid #FFB02E}' +
-    '.jg-msg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:16px;color:#fff;font-family:"Poppins",system-ui,sans-serif;background:rgba(20,18,43,.5);z-index:3}' +
+    '.jg-msg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:16px;color:#fff;font-family:"Poppins",system-ui,sans-serif;background:rgba(48,44,190,.4);z-index:3}' +
     '.jg-msg[hidden]{display:none}' +
     '.jg-msg{overflow-y:auto;justify-content:safe center}' +
     '@media (max-width:560px){.jg-msg{gap:5px;padding:8px 10px 14px}#jg-sc{font-size:.72rem!important}.jg-msg h2{font-size:1.2rem}.jg-prize{padding:6px 10px;border-radius:14px}.jg-prize b{font-size:.92rem}.jg-prize code{font-size:.9rem;padding:2px 9px;margin-top:2px}.jg-btns{gap:6px;margin-top:2px}.jg-btn{padding:9px 14px;font-size:.78rem}.jg-new{font-size:.7rem;padding:3px 10px}.jg-msg p{font-size:.78rem}}' +
@@ -174,7 +174,7 @@
   var PAL = [
     { top: [61, 58, 242], bot: [106, 61, 240], gr: [255, 248, 240], gl: [231, 226, 242], pw: [255, 176, 46], st: 0, sun: [255, 176, 46] },
     { top: [122, 63, 238], bot: [255, 107, 87], gr: [255, 236, 226], gl: [240, 205, 196], pw: [255, 150, 60], st: .15, sun: [255, 120, 70] },
-    { top: [18, 16, 44], bot: [50, 44, 110], gr: [44, 40, 96], gl: [86, 80, 160], pw: [255, 200, 90], st: 1, sun: [255, 248, 225] },
+    { top: [52, 46, 168], bot: [98, 72, 218], gr: [92, 80, 196], gl: [132, 116, 230], pw: [255, 214, 110], st: .85, sun: [255, 248, 225] },
     { top: [36, 214, 165], bot: [138, 92, 255], gr: [255, 248, 240], gl: [200, 190, 240], pw: [255, 107, 87], st: .3, sun: [255, 224, 120] }
   ];
   function clonePal(p) { return { top: p.top.slice(), bot: p.bot.slice(), gr: p.gr.slice(), gl: p.gl.slice(), pw: p.pw.slice(), st: p.st, sun: p.sun.slice() }; }

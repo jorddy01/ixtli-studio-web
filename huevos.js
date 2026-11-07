@@ -22,7 +22,7 @@
     '.hv-toast{position:fixed;left:50%;bottom:28px;z-index:100000;transform:translate(-50%,24px);opacity:0;background:#FFF8F0;color:#14122B;font:800 .98rem "Poppins",system-ui,sans-serif;padding:13px 22px;border-radius:99px;box-shadow:0 14px 34px rgba(20,18,43,.35);border:2px solid #FFB02E;pointer-events:none;transition:transform .35s cubic-bezier(.2,.9,.3,1.3),opacity .3s;max-width:calc(100vw - 32px);text-align:center}' +
     '.hv-toast.on{transform:translate(-50%,0);opacity:1}' +
     '.hv-p{position:fixed;z-index:99999;pointer-events:none;will-change:transform,opacity}' +
-    '.hv-sig{position:fixed;inset:0;z-index:100002;display:flex;align-items:center;justify-content:center;background:rgba(14,12,34,.72);backdrop-filter:blur(5px);padding:16px;opacity:0;transition:opacity .35s;cursor:pointer}' +
+    '.hv-sig{position:fixed;inset:0;z-index:100002;display:flex;align-items:center;justify-content:center;background:rgba(34,31,140,.62);backdrop-filter:blur(5px);padding:16px;opacity:0;transition:opacity .35s;cursor:pointer}' +
     '.hv-sig.on{opacity:1}' +
     '.hv-card{position:relative;background:#FFF8F0;color:#14122B;border-radius:30px;border:3px solid #FFB02E;box-shadow:0 30px 80px rgba(0,0,0,.5);padding:26px 30px 22px;text-align:center;max-width:min(92vw,520px);transform:scale(.88) translateY(14px);transition:transform .5s cubic-bezier(.2,.9,.3,1.25);font-family:"Poppins",system-ui,sans-serif}' +
     '.hv-sig.on .hv-card{transform:none}' +
