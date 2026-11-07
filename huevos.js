@@ -185,6 +185,6 @@
     console.log('%cixtli%c studio', 'font:800 34px/1.2 system-ui,sans-serif;color:#3D3AF2', 'font:800 34px/1.2 system-ui,sans-serif;color:#FFB02E');
     console.log('%c /\\_/\\\n( o.o )  ' + (en ? 'Psst… Luca saw you open the console.' : 'Psst… Luca vio que abriste la consola.') + '\n > ^ <', 'font:600 15px/1.4 ui-monospace,Menlo,monospace;color:#FF6B57');
     console.log('%c' + (en ? 'Do you like looking under the hood? 👀 We like curious people.\nLet\'s build something together: WhatsApp +52 56 2957 3030' : '¿Te gusta ver cómo está hecho? 👀 Nos caen bien los curiosos.\nHagamos algo juntos: WhatsApp 56 2957 3030'), 'font:600 14px/1.5 system-ui,sans-serif;color:#6b6890');
-    console.log('%c' + (en ? 'Tip: touch the logo 5 times, or Luca 3 times.' : 'Pista: toca el logo 5 veces, o a Luca 3 veces.'), 'font:700 12px system-ui,sans-serif;color:#24D6A5');
+    console.log('%c' + (en ? 'Tip: touch the logo 5 times, or Luca 3 times. And try typing the name of the studio on your keyboard… 🎮' : 'Pista: toca el logo 5 veces, o a Luca 3 veces. Y prueba escribir en tu teclado el nombre del estudio… 🎮'), 'font:700 12px system-ui,sans-serif;color:#24D6A5');
   } catch (e) {}
 })();
