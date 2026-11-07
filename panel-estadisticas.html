@@ -149,6 +149,7 @@ const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;',
 const fmt=n=>(+n||0).toLocaleString('es-MX');
 const PAGES={'/links':'Página de enlaces (bio)','/':'Inicio (español)','/en/':'Home (inglés)','/en':'Home (inglés)','/index.html':'Inicio (español)'};
 const EVT={wa:'WhatsApp',mail:'Correo',tel:'Teléfono',ig:'Instagram',li:'LinkedIn',cotiza:'Botón "Cotizar esto"',idioma:'Cambio de idioma'};
+const EGGS={flor:'Flor del logo',luca:'Luca maúlla',konami:'Código Konami'};
 const LANGS={es:'Español',en:'Inglés',fr:'Francés',pt:'Portugués'};
 function refName(h){if(!h)return 'Directo / sin origen';if(/instagram/.test(h))return 'Instagram';if(/google/.test(h))return 'Google';if(/facebook|fb\.com/.test(h))return 'Facebook';if(/linkedin|lnkd/.test(h))return 'LinkedIn';if(/(^|\.)t\.co|twitter|(^|\.)x\.com/.test(h))return 'X (Twitter)';if(/workers\.dev/.test(h))return 'Enlace de Instagram (bio)';if(/whatsapp|wa\.me/.test(h))return 'WhatsApp';if(/bing/.test(h))return 'Bing';if(/duckduckgo/.test(h))return 'DuckDuckGo';return h}
 let CN;try{CN=new Intl.DisplayNames(['es'],{type:'region'})}catch(e){}
@@ -189,6 +190,7 @@ function insights(d,days,map){const out=[];
   const hrs=d.hours||[];if(hrs.length){const b=hrs.reduce((a,x)=>x.c>a.c?x:a,hrs[0]);const h=b.k;out.push(['🕒','Mejor hora',(h%12||12)+':00 '+(h<12?'am':'pm')+' · '+fmt(b.c)+' visitas'])}
   const tot=(d.ref||[]).reduce((a,x)=>a+x.c,0);if(tot){const r=d.ref[0];out.push(['🚀','Principal origen',refName(r.k)+' · '+Math.round(r.c/tot*100)+'%'])}
   if((d.events||[]).length){const e=d.events[0];out.push(['💬','Contacto favorito',(EVT[e.k]||e.k)+' · '+fmt(e.c)+' clics'])}
+  const eg=d.eggs||[],et=eg.reduce((a,x)=>a+x.c,0);if(et)out.push(['🥚','Easter eggs',fmt(et)+(et===1?' encontrado':' encontrados')+' · '+(EGGS[eg[0].k]||eg[0].k)]);
   $('#ins').innerHTML=out.map((x,i)=>'<div class="in fade" style="animation-delay:'+(240+i*60)+'ms"><div class="e">'+x[0]+'</div><div><span>'+x[1]+'</span><b>'+esc(x[2])+'</b></div></div>').join('')}
 
 function lineChart(d,days,map){

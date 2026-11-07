@@ -31,6 +31,8 @@
       send({ t: 'ev', n: n, p: path, l: lang, w: window.innerWidth });
     }
 
+    window.__ixtliEgg = function (n) { send({ t: 'egg', n: n, p: path, l: lang, w: window.innerWidth }); };
+
     document.addEventListener('click', function (e) {
       var t = e.target && e.target.closest ? e.target.closest('a,button') : null;
       if (!t) return;
