@@ -1122,15 +1122,16 @@ html.hw .sec,html.hw .marcas,html.hw .final,html.hw .band{position:relative}
 
 /* quién está detrás */
 .det{display:grid;grid-template-columns:minmax(210px,290px) 1fr;gap:clamp(30px,5vw,64px);align-items:center;max-width:1020px;margin:44px auto 0;background:var(--lav);border-radius:36px;padding:clamp(28px,4vw,52px);box-shadow:12px 12px 0 var(--indigo)}
-.det-av{position:relative;aspect-ratio:1;border-radius:50%;background:var(--indigo);display:grid;place-items:center;box-shadow:0 0 0 9px var(--sol);margin:8px}
-.det-av b{font:800 clamp(5rem,11vw,8rem)/1 'Poppins',sans-serif;color:var(--crema);margin-top:-4%}
-.det-av img{position:absolute;right:-9%;bottom:-8%;width:46%;height:auto}
+.det-wrap{position:relative;margin:8px}
+.det-av{position:relative;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 28% 22%,#6360ff,var(--indigo) 58%,#2b29c9);box-shadow:0 0 0 9px var(--sol);overflow:hidden}
+.det-ph{position:absolute;left:50%;bottom:0;width:104%;height:auto;transform:translateX(-50%)}
+.det-cat{position:absolute;right:-9%;bottom:-8%;width:44%;height:auto}
 .det-nm{font:800 clamp(1.5rem,3vw,2rem)/1.15 'Poppins',sans-serif;color:var(--noche);margin:0}
 .det-rol{margin:6px 0 18px;font:700 .82rem 'Poppins',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo)}
 .det-t p{margin:0 0 14px;font-size:1.06rem;line-height:1.65;color:var(--noche)}
 .det-ch{margin:18px 0 24px}
 .det-ch span{display:inline-block;padding:7px 15px;border-radius:99px;background:#fff;border:2px solid var(--noche);font:700 .85rem 'Poppins',sans-serif;color:var(--noche);margin:0 8px 8px 0}
-@media (max-width:760px){.det{grid-template-columns:1fr;text-align:center;box-shadow:8px 8px 0 var(--indigo)}.det-av{width:min(210px,62%);margin:6px auto 22px}}
+@media (max-width:760px){.det{grid-template-columns:1fr;text-align:center;box-shadow:8px 8px 0 var(--indigo)}.det-wrap{width:min(230px,66%);margin:6px auto 26px}}
 
 /* banner carrusel de marcas */
 .marcas{background:var(--noche);color:var(--crema);position:relative;overflow:hidden;padding:clamp(60px,7.5vw,104px) 0}
@@ -1447,7 +1448,7 @@ html.hw .sec,html.hw .marcas,html.hw .final,html.hw .band{position:relative}
   <div class="wrap">
     <div class="head rv"><h2>Who’s <span class="hl">behind</span> it</h2><p class="sub">A real person, from the start of your project to the end.</p></div>
     <div class="det rv">
-      <div class="det-av" aria-hidden="true"><b>J</b><img src="../img/gato-laptop.png" alt="" width="600" height="720" loading="lazy" decoding="async"></div>
+      <div class="det-wrap"><div class="det-av"><img class="det-ph" src="../img/jorddy.webp" alt="Jorddy, founder and designer at ixtli studio" width="900" height="841" loading="lazy" decoding="async"></div><img class="det-cat" src="../img/gato-laptop.png" alt="" width="600" height="720" loading="lazy" decoding="async"></div>
       <div class="det-t">
         <h3 class="det-nm">Hi, I’m Jorddy</h3>
         <p class="det-rol">Founder and designer at ixtli studio</p>
