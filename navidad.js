@@ -23,6 +23,8 @@
     '.xm-hat{position:absolute;pointer-events:none;z-index:5;transform:rotate(-14deg);filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))}' +
     '.xm-nieve{position:fixed;inset:0;width:100%;height:100%;z-index:48;pointer-events:none}' +
     '.xm-foot{position:relative;z-index:2;text-align:center;font:700 .9rem "Poppins",sans-serif;color:#FFF8F0;padding:10px 16px 18px;opacity:.9}' +
+    'html.xm .navbar{background:#5659CF}' +
+    'html.xm .hero-in{background:linear-gradient(165deg,#5558CF 0%,#6266D9 58%,#7276E1 100%)}' +
     '';
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 
