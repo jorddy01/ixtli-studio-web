@@ -1,7 +1,7 @@
 /* EQUIPO / TEAM */
   Diseño y desarrollo: Jorddy Dylan Rivera López
   Estudio: ixtli studio
-  Instagram: @ixtli.istudio
+  Instagram: @ixtl.istudio
   Ubicación: México
 
 /* SITIO / SITE */
